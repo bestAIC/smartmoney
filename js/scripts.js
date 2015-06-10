@@ -516,7 +516,39 @@ $(document).ready(function() {
 
 
 
-
+	function graphBenefit() {
+		var winWidth = $(window).width(),
+			$slider = $('.graph-benefit ul');
+		if($slider.length) {
+			$slider.trigger('destroy');
+			if(winWidth < 690) {
+				$slider.each(function() {
+					var $this = $(this);
+					$this.carouFredSel({
+						circular: false,
+						infinite: false,
+						responsive: true,
+						items: {
+							visible: 1
+						},
+						scroll: {
+							items: 1
+						},
+						auto: {
+							play: false
+						},
+						prev: {
+							button: $this.siblings('.graph-benefit-prev')
+						},
+						next: {
+							button: $this.siblings('.graph-benefit-next')
+						}
+					});
+				});
+			} 
+		}
+	}
+	graphBenefit();
 
 	function smiSlider() {
 		var winWidth = $(window).width(),
@@ -1087,6 +1119,7 @@ $(document).ready(function() {
 			index = $this.find('option:selected').index();
 		$this.parents('.form-block').siblings('p:eq(' + index + ')').addClass('current').siblings('p').removeClass('current');
 		$this.parents('.graph-select').siblings('.graph-blocks-container').find('.graph-tab:eq(' + index + ')').addClass('current').siblings().removeClass('current');
+		graphBenefit();
 		
 	});
 
@@ -1110,6 +1143,7 @@ $(document).ready(function() {
 			'margin-left': blockMargin
 		});
 		$this.addClass('current').siblings().removeClass('current');
+		graphBenefit();
 	});
 
 	$('.graph-bonus-list').each(function() {
@@ -1513,6 +1547,8 @@ $(document).ready(function() {
 
 
 
+
+
 	function reccomendSlider() {
 		var $reccomend = $('.recoomends');
 		$reccomend.each(function () {
@@ -1591,6 +1627,7 @@ $(document).ready(function() {
 		smiSlider();
 		iconSlider();
 		resizeTariff();
+		graphBenefit();
 	}
 
 // end

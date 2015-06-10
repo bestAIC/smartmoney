@@ -4470,10 +4470,10 @@ a.partner-link:hover {
 		font-size: 90px;
 	}
 	.graph-point__first {
-		padding-right: 65px;
+		padding-right: 45px;
 	}
 	.graph-point__second {
-		pading-right: 85px;
+		pading-right: 75px;
 	}
 	.graph-image {
 		width: 650px;
@@ -6898,8 +6898,61 @@ a.aic:after {
 }
 
 
+.graph-benefit {
+	padding-top: 160px;
+}
+.graph-benefit h4 {
+	font: 14px 'Houschka Pro DemiBold',sans-serif;
+	text-transform: uppercase;
+	letter-spacing: .05em;
+	opacity: .4;
+	text-align: center;
+	margin-bottom: 56px;
+	display: block;
+}
+.graph-benefit ul {
+	overflow: hidden;
+}
+.graph-benefit li {
+	width: 250px;
+	margin-left: 110px;
+	float: left;
+	text-align: center;
+}
+.graph-benefit li:first-child {
+	margin-left: 0;
+}
+.graph-benefit li i {
+	height: 120px;
+	display: block;
+	background-repeat: no-repeat;
+	background-position: bottom center;
+}
+.graph-benefit li span {
+	font: 18px 'Houschka Pro DemiBold',sans-serif;
+	text-transform: uppercase;
+	letter-spacing: .05em;
+	opacity: .8;
+	display: block;
+	margin-top: 25px;
+}
+.graph-benefit-prev,
+.graph-benefit-next {
+	display: none;
+}
+
 
 @media screen and (max-width: 1180px) {
+	.graph-tab {
+		width: 650px;
+	}
+	.graph-benefit li {
+		width: 200px;
+		margin-left: 25px;
+	}
+	.graph-benefit h4 {
+		letter-spacing: .03em;
+	}
 	.porfile-rotation-nav {
 		display: none;
 	}
@@ -7088,6 +7141,10 @@ a.aic:after {
 	}	
 	.profile-edit-tab {
 		display: block;
+	}
+
+	.graph-point__second {
+		padding-right: 75px;
 	}
 
 	.application-form aside {
@@ -8381,6 +8438,71 @@ a.aic:after {
 		font-size: 12px;
 		letter-spacing: .05em;
 	}
+
+	.graph-tab {
+		width: 280px;
+	}
+	.graph-benefit {
+		padding-top: 0;
+		margin-top: -10px;
+		position: relative;
+	}
+	.graph-benefit h4 {
+		line-height: 20px;
+		margin-bottom: 40px;
+	}
+	.graph-benefit li {
+		width: 280px;
+		margin: 0;
+		padding: 0 10px;
+	}
+	.graph-benefit li br {
+		display: none;
+	}
+	.graph-benefit-prev,
+	.graph-benefit-next {
+		content: '';
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		top: 50%;
+		margin-top: 15px;
+		display: block;
+		cursor: pointer;
+	}
+	.graph-benefit-prev {
+		left: 0;
+	}
+	.graph-benefit-next {
+		right: 0;
+	}
+	.graph-benefit-prev:before,
+	.graph-benefit-next:before {
+		content: '';
+		width: 7px;
+		height: 13px;
+		background: url('../images/tariff-arrows.png') no-repeat #eaeaea;
+		background-size: 14px 13px;
+		position: absolute;
+		top: 50%;
+		margin-top: -6px;
+	}
+	.graph-benefit-prev:before {
+		left: 0;
+	}
+	.graph-benefit-next:before {
+		right: 0;
+		background-position: -7px 0;
+	}
+	.graph-benefit-prev:hover:before,
+	.graph-benefit-next:hover:before {
+		background-color: #25b5d3;
+	}
+	.graph-benefit-prev.disabled,
+	.graph-benefit-next.disabled {
+		display: none !important;
+	}
+	
 
 
 
