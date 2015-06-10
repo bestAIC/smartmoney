@@ -4,7 +4,6 @@ $(document).ready(function() {
 	var $custom = $('select, input[type="radio"]:not(.nostyler), input[type="checkbox"]');
 	$custom.styler();
 
-	showHidden();
 	registerClickInformation();
 
 
@@ -32,6 +31,54 @@ $(document).ready(function() {
 			$(this).find('.profile-dropdown').fadeOut();
 		}
 	);
+
+
+	function resizeTariff() {
+		var w = $(window).width();
+		if( w >= 1180 ) {
+			$('.tariff-cont').css('margin-left:', 0);
+		} else if(w < 1180) {
+			$('.all-one-container-tariff').on('click', '.one-container-tariff:not(.current)', function() {
+				var $this = $(this),
+					index = $this.index(),
+					$parent = $this.parents('.tariff-cont');
+				$this.addClass('current').siblings().removeClass('current');
+				if(index == 0) $parent.animate({'margin-left': 460}, 300);
+				if(index == 1) $parent.animate({'margin-left': 0}, 300);
+				if(index == 2) $parent.animate({'margin-left': -600}, 300);
+			});
+		}
+	}
+	resizeTariff();
+
+	$('.tariff-arrow-prev').on('click', function() {
+		var $this = $('.one-container-tariff.current'),
+			index = $this.index(),
+			$parent = $this.parents('.tariff-cont');
+		if(index == 1) {
+			$('.one-container-tariff:eq(0)').addClass('current').siblings().removeClass('current');
+			$parent.animate({'margin-left': 460}, 300);
+		}
+		if(index == 2) {
+			$('.one-container-tariff:eq(1)').addClass('current').siblings().removeClass('current');
+			$parent.animate({'margin-left': 0}, 300);
+		}
+	});
+
+	$('.tariff-arrow-next').on('click', function() {
+		var $this = $('.one-container-tariff.current'),
+			index = $this.index(),
+			$parent = $this.parents('.tariff-cont');
+		if(index == 0) {
+			$('.one-container-tariff:eq(1)').addClass('current').siblings().removeClass('current');
+			$parent.animate({'margin-left': 0}, 300);
+		}
+		if(index == 1) {
+			$('.one-container-tariff:eq(2)').addClass('current').siblings().removeClass('current');
+			$parent.animate({'margin-left': -600}, 300);
+		}
+	});
+	
 	
 
 	function resizeSteps() {
@@ -398,60 +445,226 @@ $(document).ready(function() {
 	});
 
 
-	$('.tabs-nav').on('click', 'li:not(.current)', function() {
+	function resizeTabs() {
+		$('.tabs-nav .line li.current').each(function() {
+			var $this = $(this),
+				$parent = $this.parents('.tabs'),
+				$tabs = $parent.find('.tabs-list'),
+				$tab = $tabs.find('.tab'),
+				index = $this.index();
+			$this.addClass('current').siblings().removeClass('current');
+			$tabs.animate({
+				'margin-left': index * $tab.width() * -1
+			}, 0);
+			$tab.eq(index).addClass('current').siblings().removeClass('current');
+		});
+	}
+	resizeTabs();
+
+
+	$('.tabs-nav').each(function() {
+		var $this = $(this);
+		$this.append('<select></select>');
+		var $select = $this.find('select');
+		$this.find('.line li').each(function() {
+			$select.append('<option>' + $(this).find('span').text() + '</option>')
+		});
+		$select.styler();
+	});
+
+	$('.tabs-nav').on('change', 'select', function() {
+		var $this = $(this),
+			index = $this.find('option:selected').index(),
+			$ul = $this.parents('.tabs-nav').find('.line ul'),
+			$tabs = $this.parents('.tabs').find('.tabs-list');
+		$ul.find('li:eq(' + index + ')').addClass('current').siblings().removeClass('current');
+		$tabs.find('.tab:eq(' + index + ')').addClass('current').siblings().removeClass('current');
+	});
+
+	$('.tabs-nav .line').on('click', 'li:not(.current)', function() {
 		var $this = $(this),
 			$parent = $this.parents('.tabs'),
 			$tabs = $parent.find('.tabs-list'),
 			$tab = $tabs.find('.tab'),
-			index = $this.index();
+			index = $this.index(),
+			$nav = $parent.find('.tabs-nav .line ul'),
+			$select = $parent.find('.tabs-nav select');
+		$select.find('option:eq(' + index + ')').prop('selected', true);
+		setTimeout(function() {
+			$select.trigger('refresh');
+		}, 1);
 		$this.addClass('current').siblings().removeClass('current');
 		$tabs.animate({
 			'margin-left': index * $tab.width() * -1
 		}, 750);
 		$tab.eq(index).addClass('current').siblings().removeClass('current');
-	});
-
-	$('.tabs-nav li.current').each(function() {
-		var $this = $(this),
-			$parent = $this.parents('.tabs'),
-			$tabs = $parent.find('.tabs-list'),
-			$tab = $tabs.find('.tab'),
-			index = $this.index();
-		$this.addClass('current').siblings().removeClass('current');
-		$tabs.animate({
-			'margin-left': index * $tab.width() * -1
-		}, 0);
-		$tab.eq(index).addClass('current').siblings().removeClass('current');
-	});
-
-	$('.smi-slider a').width( $(window).width() / 4 );
-
-
-	$('.smi-slider').carouFredSel({
-		circular: false,
-		infinite: false,
-		responsive: true,
-		items: {
-			visible: 4,
-			minimum: 4,
-			width: $(window).width() / 4
-		},
-		scroll: {
-			items: 2
-		},
-		auto: {
-			play: false
-		},
-		prev: {
-			button: '.smi-prev'
-		},
-		next: {
-			button: '.smi-next'
-		},
-		pagination: {
-			container: '.smi-pagination'
+		function count() {
+			var w = 0;
+			if(index > 1) {
+				for(i=0; i<index; i++) {
+					$elem = $nav.find('li:eq(' + i + ')'),
+					w += countWidth($elem, true);
+				}
+			}
+			w *= -1;
+			return w;
 		}
+		$nav.animate({
+			'margin-left': count()
+		});
 	});
+
+
+
+
+
+	function smiSlider() {
+		var winWidth = $(window).width(),
+			$slider = $('.smi-slider'),
+			$a = $slider.find('a');
+
+		if($slider.length) {
+			$slider.trigger('destroy');
+			$a.width('auto');
+
+			if(winWidth >= 1180) {
+				var w = parseFloat( $(window).width() / 4 );
+				$a.width(w);
+				$slider.carouFredSel({
+					circular: false,
+					infinite: false,
+					responsive: true,
+					items: {
+						visible: 4,
+						minimum: 4,
+						width: w
+					},
+					scroll: {
+						items: 2
+					},
+					auto: {
+						play: false
+					},
+					prev: {
+						button: '.smi-prev'
+					},
+					next: {
+						button: '.smi-next'
+					},
+					pagination: {
+						container: '.smi-pagination'
+					}
+				});
+			} else if(winWidth >= 850 && winWidth < 1180) {
+				$slider.carouFredSel({
+					circular: false,
+					infinite: false,
+					responsive: true,
+					items: {
+						visible: 3
+					},
+					scroll: {
+						items: 2
+					},
+					auto: {
+						play: false
+					},
+					prev: {
+						button: '.smi-prev'
+					},
+					next: {
+						button: '.smi-next'
+					},
+					pagination: {
+						container: '.smi-pagination'
+					}
+				});
+			} else if(winWidth >= 690 && winWidth < 850) {
+				$slider.carouFredSel({
+					circular: false,
+					infinite: false,
+					responsive: true,
+					items: {
+						visible: 2
+					},
+					scroll: {
+						items: 2
+					},
+					auto: {
+						play: false
+					},
+					prev: {
+						button: '.smi-prev'
+					},
+					next: {
+						button: '.smi-next'
+					},
+					pagination: {
+						container: '.smi-pagination'
+					}
+				});
+			} else if(winWidth < 690) {
+				$slider.carouFredSel({
+					circular: false,
+					infinite: false,
+					responsive: true,
+					items: {
+						visible: 1
+					},
+					scroll: {
+						items: 1
+					},
+					auto: {
+						play: false
+					},
+					prev: {
+						button: '.smi-prev'
+					},
+					next: {
+						button: '.smi-next'
+					},
+					pagination: {
+						container: '.smi-pagination'
+					}
+				});
+			}
+		}
+	}
+	smiSlider();
+
+
+	function iconSlider() {
+		var winWidth = $(window).width(),
+			$slider = $('.icon-slider');
+
+		if($slider.length) {
+			if(winWidth <= 690) {
+				$slider.carouFredSel({
+					circular: false,
+					infinite: false,
+					responsive: true,
+					items: {
+						visible: 1
+					},
+					scroll: {
+						items: 1
+					},
+					auto: {
+						play: false
+					},
+					prev: {
+						button: '.icon-slider-prev'
+					},
+					next: {
+						button: '.icon-slider-next'
+					}
+				});
+			} else {
+				$slider.trigger('destroy');
+			}
+		}
+	}
+	iconSlider();
 
 
 	$('.new .image a').hover(
@@ -522,7 +735,14 @@ $(document).ready(function() {
 			$slider = $this.find('.choose-slider'),
 			$form = $this.find('.choose-text'),
 			$min = $this.find('.min'),
-			$max = $this.find('.max');
+			$max = $this.find('.max'),
+			$parent = $this.parents('form'),
+			$footer = $parent.find('footer'),
+			$return = $footer.find('.count-first').find('.num'),
+			$to = $footer.find('.count-second').find('.num'),
+			$month = $footer.find('.count-second').find('big'),
+			$bet = $footer.find('.count-third').find('.num'),
+			bet = parseFloat( $bet.text() );
 
 		$form.val(value);
 		function slideChange(i, elem) {
@@ -539,6 +759,18 @@ $(document).ready(function() {
 					$errors.find('span').remove();
 				}
 			}
+			var price = parseFloat( $parent.find('.choose-price .choose-text').val() ),
+				day = parseFloat( $parent.find('.choose-day .choose-text').val() ),
+				ret = Math.ceil( price + day * bet ),
+				today = new Date();
+			today.setDate(today.getDate() + day);
+			var days = ['Воскресенье','Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
+				months = ['января', 'февраля', 'марта', 'мая','июня', 'июля','августа','сентября','октября','гоября','декабря'],
+				m = today.getMonth(),
+				d = today.getDate();
+			$return.text(ret);
+			$to.text(d),
+			$month.text(months[m]);
 		}
 
 		$slider.slider({
@@ -566,6 +798,22 @@ $(document).ready(function() {
 				);
 			}
 		});
+	});
+
+	
+	$('.archive-block .btn').on('click', function() {
+		var $this = $(this),
+			$span = $this.find('span'),
+			$li = $this.siblings('.list').find('.full');
+		if( $this.hasClass('opened') ) {
+			$this.removeClass('opened');
+			$li.slideUp();
+			$span.text('Подробнее');
+		} else {
+			$this.addClass('opened');
+			$li.slideDown();
+			$span.text('Скрыть');
+		}
 	});
 
 	
@@ -877,6 +1125,8 @@ $(document).ready(function() {
 
 
 
+
+
 	$('.testimonial').hover(
 		function() {
 			$(this).find('.testimonial-hover').fadeIn();
@@ -1020,7 +1270,7 @@ $(document).ready(function() {
 		$start.find('.advantage:eq(2)').delay(5700).animate({'opacity': 1}, 350);
 		$start.find('.scroll').delay(6050).animate({'opacity': 1}, 350);
 	}
-	startPageAnimation();
+	//startPageAnimation();
 
 
 	var $graph = $('.graph');
@@ -1337,6 +1587,10 @@ $(document).ready(function() {
 		grapBlocksWidth();
 		resizeReccomendSlider();
 		alignProfileHeight();
+		resizeTabs();
+		smiSlider();
+		iconSlider();
+		resizeTariff();
 	}
 
 // end
@@ -1519,20 +1773,7 @@ function changeRadioSelect(elem) {
 
 
 
-function showHidden() {
-		$('.all-one-container-tariff .one-container-tariff').mouseover(function(){
-			var id = $(this).attr('data-id');
-			$('.one-container-tariff .container-tariff[data-id="'+id+'"]').css('border', 'none');
-			$('.one-container-tariff .container-tariff[data-id="'+id+'"] span.js').css('display', 'block');
-			$('.one-container-tariff .container-tariff[data-id="'+id+'"] a.js').css('display', 'block');
-		});
-		$('.all-one-container-tariff .one-container-tariff').mouseout(function(){
-			var id = $(this).attr('data-id');
-			$('.one-container-tariff .container-tariff[data-id="'+id+'"]').attr('style', 'border: 3px solid #f2f4f7;');
-			$('.one-container-tariff .container-tariff[data-id="'+id+'"] span.js').css('display', 'none');
-			$('.one-container-tariff .container-tariff[data-id="'+id+'"] a.js').css('display', 'none');
-		});
-	}
+
 	
 function registerClickInformation(){
 	$('.center-container h3.js').on('click', function(){
