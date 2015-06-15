@@ -5268,6 +5268,8 @@ body {
 	background: #fff;
 	padding: 83px 0 85px;
 	display: none;
+	position: relative;
+	z-index: 120;
 }
 
 .callback {
