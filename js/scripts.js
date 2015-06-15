@@ -1242,17 +1242,10 @@ $(document).ready(function() {
 			$(this).find('.testimonial-hover').fadeOut();
 		}
 	).on('click', function() {
-		var $popup = $('.testimonial-popup');
-		$popup.fadeIn();
-		$popup.jScrollPane();
-		$popup.find('.close').remove();
-		$popup.append('<div class="close"></div>');
-		$popup.siblings('.testimonial__nav').fadeIn();
+		return false;
 	});
 
-	$('.testimonial-popup').on('click', '.close', function() {
-		$(this).parents('.testimonial-popup').fadeOut().siblings('.testimonial__nav').fadeOut();
-	});
+
 
 
 
