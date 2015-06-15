@@ -15,11 +15,11 @@ img {
 	vertical-align: top;
 }
 .clearfix:before, .clearfix:after {
-    content: "";
+	content: "";
 	display: table;
 }
 .clearfix:after {
-    clear: both;
+	clear: both;
 }
 address {
 	font-style: normal;
@@ -338,22 +338,21 @@ a.btn-next:after {
 	float: left;
 }
 .header-left .nav-link {
-	width: 68px;
-	height: 60px;
-	background: url('../images/header-nav.png') no-repeat center center;
+	width: 28px;
+	height: 25px;
+	background: url('../images/header-nav.png') no-repeat center center #fff;
 	position: relative;
 	cursor: pointer;
-	transition: all .3s linear;
+	transition: background-color .3s linear;
+	top: 19px;
+	margin-left: 20px;
 }
 .header-left .nav-link:hover {
-	opacity: .7;
+	background-color: #1ad3d1;
 }
 .dropdowned .header-left .nav-link {
 	background-image: url('../images/header-nav-dropdowned.png');
 	cursor: pointer;
-}
-.header-left .nav-link:hover {
-	background-color: rgba(0, 0, 0, .1);
 }
 .header-left .logo {
 	float: left;
@@ -614,7 +613,9 @@ a.btn-next:after {
 	color: #fff;
 	text-align: center;
 	display: none;
-	
+}
+.take-credit:hover {
+	color: #fff;
 }
 .scroll-take .take-credit {
 	display: block;
@@ -848,6 +849,82 @@ a.btn-next:after {
 	cursor: pointer;
 }
 
+
+.oferta {
+	margin-bottom: 50px;
+}
+.oferta-line {
+	margin-top: -2px;
+}
+.oferta-line:first-child {
+	margin-top: 0;
+}
+.oferta-line label {
+	display: block;
+	padding: 18px;
+	border: 2px solid #f2f4f7;
+	overflow: hidden;
+}
+.oferta-line label .jq-checkbox {
+	float: left;
+}
+.oferta-title {
+	font: 21px/27px 'Houschka Pro Light',sans-serif;
+	letter-spacing: -.025em;
+	color: #3e495b;
+	display: block;
+	margin-left: 40px;
+}
+.oferta-link {
+	cursor: pointer;
+	color: #3ec9d0;
+	border-bottom: 1px dashed #3ec9d0;
+	opacity: all .3s linear;
+}
+.oferta-link:hover {
+	color: #1a9dd3;
+	border-bottom-color: #1a9dd3;
+}
+.oferta-text {
+	border: 2px solid #f2f4f7;
+	border-top: none;
+	background: #fdfdfe;
+	font: 16px/27px 'Houschka Pro Medium',sans-serif;
+	letter-spacing: -.05em;
+	color: rgba(62, 73, 91, .6);
+	height: 195px;
+	overflow: hidden;
+	padding: 18px;
+}
+.oferta-text.hide {
+	display: none;
+}
+.oferta-text-scroll {
+	height: 170px;
+	overflow: hidden;
+}
+.oferta-hide {
+	margin-bottom: 70px;
+}
+
+.oferta-hide {
+	display: none;
+}
+.oferta-confirm {
+	display: none;
+}
+
+.oferta-text table td {
+	font: 16px/27px 'Houschka Pro Medium',sans-serif;
+	letter-spacing: -.05em;
+	color: rgba(62, 73, 91, .6);
+	vertical-align: top;
+}
+.oferta-text table td:first-child {
+	width: 30%;
+	padding-right: 15px;
+}
+ 
 
 @media screen and (max-width: 1180px) {
 	.scrolled {
@@ -1374,6 +1451,10 @@ a.btn-next:after {
 	border-top: 7px solid #eee;
 	border-left: 7px solid transparent;
 	border-right: 7px solid transparent;
+}
+.hint-text.visible {
+	display: block !important;
+	transition: all 0 linear;
 }
 
 
@@ -2383,14 +2464,14 @@ a.partner-link:hover {
 }
 /* Overlay helper */
 .fancybox-lock {
-    overflow: hidden !important;
-    width: auto;
+	overflow: hidden !important;
+	width: auto;
 }
 .fancybox-lock body {
-    overflow: hidden !important;
+	overflow: hidden !important;
 }
 .fancybox-lock-test {
-    overflow-y: hidden !important;
+	overflow-y: hidden !important;
 }
 .fancybox-overlay {
 	position: absolute;
@@ -2437,7 +2518,7 @@ a.partner-link:hover {
 	background: rgba(0, 0, 0, 0.8);
 	-webkit-border-radius: 15px;
 	   -moz-border-radius: 15px;
-	        border-radius: 15px;
+			border-radius: 15px;
 	text-shadow: 0 1px 2px #222;
 	color: #FFF;
 	font-weight: bold;
@@ -2560,6 +2641,7 @@ a.partner-link:hover {
 	margin: 0 auto;
 	padding: 60px 85px;
 }
+
 .chooses .choose-block {
 	float: right;
 }
@@ -4223,7 +4305,10 @@ a.partner-link:hover {
 	color: #3e495b;
 	letter-spacing: -.025em;
 	opacity: .8;
-	margin-bottom: 77px;
+	margin-bottom: 30px;
+}
+.block-back p + h3 {
+	padding-top: 47px;
 }
 
 .payments-types,
@@ -4457,15 +4542,30 @@ a.partner-link:hover {
 	margin-bottom: 4px;
 }
 
+.recovery-page .line__short {
+	width: 600px;
+}
+.recovery-page .form-page {
+	margin-top: 72px;
+}
+
+.profile-rotation .app {
+	border: 3px solid #d1ebf6;
+}
+
 
 
 @media screen and (min-width: 1180px) {
 	.graph-bonus-list {
 		margin: 0 !important;
 	}
+
 }
 
 @media screen and (max-width: 1180px) {
+	.app-rotation {
+		margin-bottom: 90px
+	}
 	.graph-point__third .text {
 		font-size: 90px;
 	}
@@ -5235,8 +5335,11 @@ body {
 	padding-right: 0;
 }
 .callback-form-top {
+	padding-bottom: 30px;
 	overflow: hidden;
-	margin-bottom: 30px;
+}
+.callback-form-top.clearfix {
+	overflow: visible;
 }
 .callback-form-top .callback-form {
 	width: 279px;
@@ -5293,8 +5396,8 @@ body {
 	top: -3px;
 	margin-left: 8px;
 }
-.callback-form-top .btn {
-	margin-top: 10px;
+.callback-form-top .btn span {
+	padding: 13px 18px;
 }
 
 
@@ -6717,6 +6820,62 @@ section.more-info .tabs-line section.tabs-list{
 }
 
 
+.toggle-form {
+	overflow: hidden;
+	text-align: left;
+}
+.toggle-form label {
+	float: left;
+}
+.toggle-form label .jq-radio {
+	display: none !important;
+}
+.toggle-form label span {
+	font: 21px 'Houschka Pro Medium',sans-serif;
+	color: #c1c4c8;
+	transition: color .3s linear;
+	cursor: pointer;
+}
+.toggle-form label.current span {
+	color: #40ccd2;
+	cursor: default;
+}
+.toggle-form .toggler {
+	width: 24px;
+	height: 14px;
+	background: #5abec1;
+	border-radius: 7px;
+	float: left;
+	position: relative;
+	margin: 8px 15px 0;
+}
+.toggle-form .toggler:before {
+	content: '';
+	position: absolute;
+	top: 3px;
+	left: 13px;
+	width: 8px;
+	height: 8px;
+	background: #fff;
+	border-radius: 50%;
+	transition: left .3s linear;
+}
+.toggle-form .toggler#last:before {
+	left: 3px;
+}
+
+
+
+.conditions {
+	display: inline-block;
+	width: 26px;
+	height: 28px;
+	background: url('../images/conditions.png') no-repeat #eaeaea;
+	font-size: 0;
+}
+.conditions:hover {
+	background-color: #5abec1;
+}
 
 
 
@@ -6856,7 +7015,7 @@ section.more-info .tabs-line section.tabs-list{
 	left: 0;
 	width: 100%;
 	height: 100%;
-	z-index: 100;
+	z-index: 200;
 	cursor: pointer;
 	transition: opacity .3s linear;
 }
@@ -6941,6 +7100,199 @@ a.aic:after {
 	display: none;
 }
 
+
+.partner-block {
+	margin-top: 70px;
+	position: relative;
+}
+.partner-block:first-child {
+	margin-top: 0;
+}
+.partner-block h4 {
+	font: 30px 'Houschka Pro Bold',sans-serif;
+	letter-spacing: -.025em;
+	color: #3e495b;
+	position: relative;
+	padding-bottom: 11px;
+	margin-bottom: 46px;
+}
+.partner-block h4:after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: #25b8d3;
+	background: linear-gradient(to right, #25b8d3, #25d3c5);
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+
+.partners-profile-left {
+	float: left;
+	width: 450px;
+}
+
+.partners-profile-right {
+	float: right;
+	width: 450px;
+}
+
+.your-code {
+	padding-bottom: 1px;
+}
+.your-code label {
+	float: left;
+	font: 36px 'Houschka Pro Light',sans-serif;
+	letter-spacing: .03em;
+	opacity: .5;
+}
+.your-code-input {
+	margin: -10px 0 0 180px;
+	position: relative;
+}
+.your-code-input .form-text {
+	font: 36px 'Houschka Pro Medium',sans-serif;
+	letter-spacing: .03em;
+	padding: 8px 55px 8px 18px;
+	width: 210px;
+}
+.your-code-input a {
+	width: 28px;
+	height: 28px;
+	background: url('../images/copy.png') no-repeat #e5e5e5;
+	transition: background-color .3s linear;
+	position: absolute;
+	top: 17px;
+	right: 78px;
+}
+.your-code-input a.hover {
+	background-color: #23b5d5;
+}
+.your-code-hint {
+	font: 16px 'Houschka Pro Medium',sans-serif;
+	letter-spacing: -.025em;
+	color: #3e495b;
+	opacity: .8;
+	margin-top: 14px;
+}
+
+.partner-stat .datepicker {
+	float: left;
+	width: 170px;
+}
+.partner-stat label {
+	float: left;
+	font: 21px 'Houschka Pro Medium',sans-serif;
+	letter-spacing: -.025em;
+	color: #3e495b;
+	margin-top: 10px;
+}
+.partner-stat label.first {
+	margin-right: 21px; 
+}
+.partner-stat label.last {
+	margin-left: 18px;
+	margin-right: 21px;
+}
+.partner-stat .form-text {
+	width: 100%;
+}
+
+.partner-link {
+	position: relative;
+	margin-top: 31px;
+}
+.partner-link:first-child {
+	margin-top: 0;
+}
+.partner-link label {
+	font: 14px 'Houschka Pro DemiBold',sans-serif;
+	letter-spacing: .05em;
+	text-transform: uppercase;
+	opacity: .4;
+	display: block;
+}
+.partner-link input {
+	font: 24px 'Houschka Pro Medium',sans-serif;
+	letter-spacing: .03em;
+	color: rgba(0, 0, 0, .8);
+	border-bottom: 1px solid rgba(37, 191, 207, .1);
+	width: 100%;
+	white-space: nowrap;
+	padding: 18px 40px 17px 0;
+	transition: color .3s linear;
+}
+.partner-link input:focus {
+	color: #66d6d5;
+}
+.partner-link a {
+	width: 28px;
+	height: 28px;
+	background: url('../images/copy.png') no-repeat #e5e5e5;
+	transition: background-color .3s linear;
+	position: absolute;
+	bottom: 24px;
+	right: 0;
+}
+.partner-link a.hover {
+	background-color: #23b5d5;
+}
+
+.partner-block .ad-list {
+	width: 720px;
+}
+.partner-banner {
+	position: absolute;
+	top: 0;
+	right: 48px;
+	padding: 32px 30px 22px;
+	background: #fff;
+	border: 2px solid #e1e3e4;
+	border-radius: 5px;
+}
+.partner-form .form-text {
+	width: 100%;
+}
+.partner-form .form-block {
+	margin-bottom: 20px;
+}
+.partner-form .form-submit {
+	text-align: left;
+}
+
+.partner-block .docs-list {
+	margin-left: 0;
+	margin-right: 0;
+}
+.partner-block .docs-list .doc {
+	width: 100%;
+	margin-left: 0;
+	margin-right: 0;
+	display: block;
+}
+
+.partner-offer .credit-offer-list {
+	text-align: justify;
+	font-size: 2px;
+	line-height: 0;
+}
+.partner-offer .credit-offer-list:after {
+	content: '';
+	display: inline-block;
+	width: 100%;
+	height: 0;
+	visibility: hidden;
+}
+.partner-offer .credit-offer-list a {
+	text-align: left;
+	font-size: 13px;
+	line-height: normal;
+	display: inline-block;
+	vertical-align: top;
+	width: auto;
+	margin-left: 0;
+	float: none;
+}
 
 @media screen and (max-width: 1180px) {
 	.graph-tab {
@@ -7448,7 +7800,7 @@ a.aic:after {
 		display: none; 
 	}
 	.one-container-tariff:hover .container-tariff {
-		border-color: #f2f4f7;;
+		border-color: #f2f4f7;
 	}
 	.all-one-container-tariff .one-container-tariff:hover {
 		top: 0;
@@ -7489,6 +7841,44 @@ a.aic:after {
 		display: block !important;
 		margin-top: 80px
 	}
+
+	.partners-profile-left,
+	.partners-profile-right {
+		float: none;
+		width: auto;
+	}
+	.partners-profile-right,
+	.partner-form {
+		margin-top: 70px;
+	}
+	.your-code {
+		width: 450px;
+	}
+	.your-code-hint {
+		font: 21px/30px 'Houschka Pro Medium',sans-serif;
+		letter-spacing: -.025em;
+		color: #3e495b;
+		opacity: .8;
+		width: 400px;
+	}
+	.adaptive-hide {
+		display: none;
+	}
+	.partner-link a {
+		display: none;
+	}
+	.partner-banner {
+		display: none;
+	}
+	.profile-slider-partners {
+		margin-bottom: 80px;
+	}
+	.partner-offer .credit-offer-list a {
+		width: 100%;
+	}
+	.recovery-page .line__short {
+		width: 650px;
+	}
 }
 
 @media screen and (min-width: 1180px) {
@@ -7501,7 +7891,8 @@ a.aic:after {
 @media screen and (max-width: 690px) {
 	.profile-rotation,
 	.profile-slider,
-	.credit-offer-list {
+	.credit-offer-list,
+	.recovery-page .line__short {
 		width: 280px;
 	}
 	.header-right .profile {
@@ -8431,9 +8822,6 @@ a.aic:after {
 	.dropdown-close {
 		top: 40px;
 	}
-	.list li {
-		margin-top: 5px;
-	}
 	.dropdown-partner .button {
 		font-size: 12px;
 		letter-spacing: .05em;
@@ -8503,6 +8891,66 @@ a.aic:after {
 		display: none !important;
 	}
 	
+	.your-code {
+		width: auto;
+	}
+	.your-code label {
+		float: none;
+		padding-bottom: 10px;
+		display: block;
+	}
+	.your-code-input {
+		margin: 0;
+		width: 100%;
+	}
+	.your-code-input .form-text {
+		width: 100%;
+	}
+	.your-code-input a {
+		right: 18px;
+	}
+	.partner-link input {
+		padding-right: 0;
+		margin-right: -20px;
+	}
+	.adaptive-hide-mobile {
+		display: none;
+	}
+	.profile-slider-partners .profile-rotation {
+		margin-top: 40px;
+	}
+	.profile-slider-partners .profile-rotation:first-child {
+		margin-top: 0;
+	}
+	.partner-block h4 {
+		font-size: 21px;
+		line-height: normal;
+	}
+	.partner-form {
+		padding-top: 0;
+		margin-top: -16px;
+	}
+	
+
+	.oferta-text table thead {
+		display: none;
+	}
+	.oferta-text table tr {
+		display: block;
+		border-bottom: 2px solid rgba(37, 191, 207, .1);
+		padding: 16px 0 18px;
+	}
+	.oferta-text table td,
+	.oferta-text table td:first-child {
+		display: block;
+		width: 100%;
+		border: none;
+		padding: 0;
+	}
+	.oferta-text table td:first-child {
+		font-family: 'Houschka Pro DemiBold',sans-serif;
+		padding-bottom: 10px;
+	}
 
 
 

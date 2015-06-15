@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Завявка оформлена!</title>
+		<title>Восстановление пароля</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
 		<link rel="stylesheet" href="css/style.css">
@@ -218,6 +218,7 @@
 				</div>
 			</div>
 			<!-- Конец авторизации -->
+
 		</div>
 		<!-- Конец верхних всплывашек -->
 	
@@ -267,14 +268,43 @@
 		</header>
 
 
-		<section class="block-back">
+		<section class="block-back recovery-page">
 			<div class="line__short">
-				<h3>Заявка оформлена!</h3>
-				<p>Спасибо за оформленную заявку.</p>
+				<h3>Восстановление пароля</h3>
+				<p>Для восстановления пароля введите ваш номер мобильного телефона или электронную почту,которую вы указывали при регистрации, и нажмите на "восстановить".</p>
+
+				<p>Если у вас нет доступа к номеру телефона, привязанному к аккаунту, или вы забыли e-mail, то обратитесь в службу поддержки, написав письмо на <a href="mailto:support@smartmoney.ru">support@smartmoney.ru</a></p>
+
+				<div class="form-page">
+					<form>
+						<div class="form-block">
+							<div class="form-label">
+								<label for="recovery-login">Телефон <nobr>или e-mail</nobr></label>
+							</div>
+							<div class="form-input">
+								<input type="text" id="recovery-login" class="form-text" placeholder="+7 (900) 00-00-00">
+							</div>
+						</div>
+
+						<div class="form-block">
+							<div class="form-label">
+								<label for="recovery-surname">Фамлилия</label>
+							</div>
+							<div class="form-input">
+								<input type="text" id="recovery-surname" class="form-text" placeholder="Иванов">
+							</div>
+						</div>
+
+
+						<div class="form-submit clearfix">
+							<!-- <div class="form-submit-sent">Спасибо за ваш вопрос</div> -->
+							<button type="submit" class="btn"><span>Восстановить</span></button>
+						</div>
+					</form>
+				</div>
 			</div>
 		</section>
 
-		
 		
 
 

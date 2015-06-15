@@ -15,6 +15,7 @@
 		<script src="js/jquery.mousewheel.min.js"></script>
 		<script src="js/jquery.jscrollpane.min.js"></script>
 		<script src="js/jquery.ui.touch-punch.min.js"></script>
+		<script src="js/jquery.zclip.min.js"></script>
 		<script src="js/scripts.js"></script>
 		<!--[if lt IE 9]> 
 		<script src="js/html5.js"></script> 
@@ -130,6 +131,7 @@
 							<a href="faq.html" class="cb-faq"><span>Ответы на вопросы</span></a>
 						</nav>
 						<div class="callback-container">
+							<form method="post" action="#">
 							<div class="callback-form-top">
 								<div class="callback-form">
 									<label for="cb-call-name">Ваше имя</label>
@@ -141,20 +143,18 @@
 								</div>
 							</div>
 							
-							<form action="#">
-							<div class="callback-form-top">
-								<div class="callback-form">
-									<label for="cb-call-time">Время звонка</label>
-									<div class="radios">
-										<label>
-											<input type="radio" name="cb-call-time" checked>
-											<span>сейчас</span>
-										</label>
-										<label>
-											<input type="radio" name="cb-call-time">
-											<span>назначить время</span>
-										</label>
-									</div>
+							
+							<div class="callback-form-top clearfix">
+								<div class="callback-form form-block">
+									<select data-placeholder="Время звонка">
+										<option></option>
+										<option>10:00 — 11:00</option>
+										<option>12:00 — 13:00</option>
+										<option>13:00 — 14:00</option>
+										<option>15:00 — 16:00</option>
+										<option>16:00 — 17:00</option>
+										<option>17:00 — 18:00</option>
+									</select>
 								</div>
 								<div class="callback-form">
 									<button type="submit" class="btn"><span>Позвоните мне</span></button>
@@ -171,6 +171,7 @@
 			<!-- Авторизация -->
 			<div class="top-area" data-id="cb-login">
 				<div class="line__long">
+					<form method="post" action="profile.html">
 					<div class="callback callback-login clearfix">
 						<div class="close"></div>
 						<div class="callback-container">
@@ -179,7 +180,17 @@
 								<label class="label" for="cb-login-email">Электронная почта</label>
 								<input type="text" class="form-text" id="cb-login-email">
 								<footer>
-									<a href="#">Вход по телефону</a>
+									<div class="toggle-form">
+										<label class="current">
+											<input type="radio" id="login-form" type-link="profile.html" type-id="first">
+											<span>Клиент</span>
+										</label>
+										<div class="toggler"></div>
+										<label>
+											<input type="radio" id="login-form" type-link="partner-profile.html" type-id="last">
+											<span>Партнер</span>
+										</label>
+									</div>
 								</footer>
 							</div>
 
@@ -187,7 +198,7 @@
 								<label class="label" for="cb-login-password">Пароль</label>
 								<input type="text" class="form-text" id="cb-login-password">
 								<footer>
-									<a href="#">Забыли пароль?</a>
+									<a href="recovery.html">Забыли пароль?</a>
 								</footer>
 							</div>
 							
@@ -371,7 +382,7 @@
 						<div class="step-all">
 
 							<!-- Начало первого шага -->
-							<div class="step current" data-step="1">
+							<div class="step" data-step="1">
 								<h1>Контактные данные</h1>
 
 								<div class="form-block">
@@ -445,7 +456,7 @@
 										<label for="form-sms-confirm">Подтверждение операции при помощи SMS</label>
 									</div>
 									<div class="form-input form-input_sms-confirm">
-										<input type="text" id="form-sms-confirm" class="form-text"> 
+										<input type="text" id="form-sms-confirm" class="form-text form-hint-visible"> 
 										<div class="hint">
 											<div class="icon">?</div>
 											<div class="hint-text"><div>Введите код из SMS</div></div>
@@ -962,41 +973,258 @@
 
 
 							<!-- Начало пятого шага -->
-							<div class="step" data-step="5">
+							<div class="step current" data-step="5">
 								<h1>Вариант перевода денег</h1>
 
-								<h2><span>5.1</span> Выберите способ перевода</h2>
-								<div class="form-block">
-									<select class="payment-type-select">
-										<option value="card">Банковская карта</option>
-										<option value="transfer">Банковский перевод</option>
-										<option value="qiwi">QIWI</option>
-										<option value="webmoney">WebMoney</option>
-										<option value="yandex">Яндекс.Деньги</option>
-									</select>
+								<h2><span>5.1</span> Индивидуальные условия займа</h2>
+
+								<div class="oferta">
+									<div class="oferta-line">
+										<label>
+											<input type="checkbox">
+											<span class="oferta-title">Я соглашаюсь с <span class="oferta-link">инидвидуальными условиями займа</span></span>
+										</label>
+										<div class="oferta-text"><div class="oferta-text-scroll">
+											<table class="table">
+												<thead>
+													<tr>
+														<th>Условие</th>
+														<th>Содержание условия</th>
+													</tr>
+												<thead>
+												<tbody>
+													<tr>
+														<td>Сумма   кредита (займа) или лимит кредитования и порядок его изменения</td>
+														<td>Описание</td>
+													</tr>
+													<tr>
+														<td>Срок действия договора, срок возврата кредита (займа)</td>
+														<td>Описание</td>
+													</tr>
+													<tr>
+														<td>Валюта, в которой предоставляется кредит (заём)</td>
+														<td>Описание</td>
+													</tr>
+													<tr>
+														<td>Процентная ставка (процентные ставки) (в процентах годовых) или порядок ее (их) определения</td>
+														<td>Описание</td>
+													</tr>
+													<tr>
+														<td>Порядок  определения курса иностранной  валюты при переводе  денежных средств кредитором третьему  лицу, указанному заемщиком</td>
+														<td>Описание</td>
+													</tr>
+													<tr>
+														<td>Количество, размер и периодичность (сроки) платежей заемщика  по договору или порядок  определения этих платежей</td>
+														<td>Описание</td>
+													</tr>
+													<tr>
+														<td>Порядок изменения количества, размера и периодичности   (сроков) платежей заемщика при частичном  досрочном возврате кредита (займа)</td>
+														<td>Описание</td>
+													</tr>
+													<tr>
+														<td>Способы исполнения заемщиком обязательств по договору по месту нахождения заемщика</td>
+														<td>Описание</td>
+													</tr>
+													<tr>
+														<td>Бесплатный способ исполнения заемщиком обязательств по договору</td>
+														<td>Описание</td>
+													</tr>
+													<tr>
+														<td>Обязанность заемщика заключить иные договоры</td>
+														<td>Описание</td>
+													</tr>
+													<tr>
+														<td>Обязанность заемщика по предоставлению обеспечения исполнения обязательств по договору и требования к такому обеспечению</td>
+														<td>Описание</td>
+													</tr>
+													<tr>
+														<td>Цели использования заемщиком потребительского  кредита (займа)</td>
+														<td>Описание</td>
+													</tr>
+													<tr>
+														<td>Ответственность заемщика за надлежащее исполнение условий договора, размер неустойки (штрафа, пени) или порядок их определения</td>
+														<td>Описание</td>
+													</tr>
+													<tr>
+														<td>Условине о уступке кредитором третьим лицам  прав (требований) по договору</td>
+														<td>Описание</td>
+													</tr>
+													<tr>
+														<td>Согласие заемщика с общими условиями договора</td>
+														<td>Описание</td>
+													</tr>
+													<tr>
+														<td>Услуги, оказываемые кредитором   заемщику  за отдельную плату и  необходимые для заключения договора, их цена или порядок ее определения, а также согласие заемщика на оказание таких услуг</td>
+														<td>Описание</td>
+													</tr>
+												</tbody>
+											</table>
+										</div></div>
+									</div>
+									<div class="oferta-line">
+										<label>
+											<input type="checkbox">
+											<span class="oferta-title">Я соглашаюсь с <span class="oferta-link">условиями публичной оферты</span></span>
+										</label>
+										<div class="oferta-text hide"><div class="oferta-text-scroll">
+											<p>Договор займа является наиболее типичным, универсальным кредитным обязательством. Возникнув из римского контракта "mutuum" (в пер. с латинского ссуда), договор займа и сегодня сохраняет значение общей модели, по которой строится регулирование всех кредитных отношений.</p>
+											<p>Договор займа - это соглашение, по которому одна сторона (заимодавец) передает в собственность другой стороне (заемщику) денежные средства или иные вещи, определенные родовыми признаками, а заемщик обязуется возвратить заимодавцу такую же сумму денег (сумму займа) или равное количество полученных им вещей того же рода и качества. Права и обязанности участников любого вида договора займа регулируются пар.1 гл.42 ГК РФ.</p>
+											<p>Договор займа является классической разновидностью реального и одностороннего договора. В силу действия п.1 ст.807 ГК РФ любой образец договора займа считается заключенным с момента передачи денег или других вещей. Реальный характер всех видов договора займа не означает, что соглашение сторон не имеет существенного значения: соглашения сторон недостаточно для возникновения заемного обязательства, однако (как и при всяком договоре) соглашение и при займе является необходимым моментом. Односторонность же договора займа проявляется в том, что заемщик создает для себя заключением договора долг, а займодавец всегда получает право требования.</p>
+										</div></div>
+									</div>
+									<div class="oferta-line">
+										<label>
+											<input type="checkbox">
+											<span class="oferta-title">Я соглашаюсь с <span class="oferta-link">на обработку персональных данных и моей кредитной истории</span></span>
+										</label>
+										<div class="oferta-text hide"><div class="oferta-text-scroll">
+											<p>Договор займа является наиболее типичным, универсальным кредитным обязательством. Возникнув из римского контракта "mutuum" (в пер. с латинского ссуда), договор займа и сегодня сохраняет значение общей модели, по которой строится регулирование всех кредитных отношений.</p>
+											<p>Договор займа - это соглашение, по которому одна сторона (заимодавец) передает в собственность другой стороне (заемщику) денежные средства или иные вещи, определенные родовыми признаками, а заемщик обязуется возвратить заимодавцу такую же сумму денег (сумму займа) или равное количество полученных им вещей того же рода и качества. Права и обязанности участников любого вида договора займа регулируются пар.1 гл.42 ГК РФ.</p>
+											<p>Договор займа является классической разновидностью реального и одностороннего договора. В силу действия п.1 ст.807 ГК РФ любой образец договора займа считается заключенным с момента передачи денег или других вещей. Реальный характер всех видов договора займа не означает, что соглашение сторон не имеет существенного значения: соглашения сторон недостаточно для возникновения заемного обязательства, однако (как и при всяком договоре) соглашение и при займе является необходимым моментом. Односторонность же договора займа проявляется в том, что заемщик создает для себя заключением договора долг, а займодавец всегда получает право требования.</p>
+										</div></div>
+									</div>
+
 								</div>
 
 
-
-								<div class="payment-type current" data-payment="card">
-									<h2><span>5.2</span> Данные карты</h2>
-									
-									<div class="card-block-hidden">
-										<div class="form-block">
-											<div class="form-label">
-												<label for="card-real-number">Номер карты</label>
+								<div class="oferta-hide">
+									<div class="form-block form-sms">
+										<div class="form-label">
+											<label for="form-sms-confirm">Подтверждение операции при помощи SMS</label>
+										</div>
+										<div class="form-input form-input_sms-confirm">
+											<input type="text" id="form-sms-confirm" class="form-text form-hint-visible" placeholder="0000" maxlength="4"> 
+											<div class="hint">
+												<div class="icon">?</div>
+												<div class="hint-text"><div>Введите код из SMS</div></div>
 											</div>
-											<div class="form-input">
-												<input type="text" id="card-real-number" class="form-text" value="0000 0000 0000 0000">
+										</div>
+									</div>
+
+									<div class="form-submit clearfix">
+										<button type="submit" class="btn btn-next btn-next-final"><span>Продолжить</span></button>
+										<a href="#" class="back-link"><span>Назад</span></a>
+									</div>
+								</div>
+
+								
+								<div class="oferta-confirm">
+									<h2><span>5.2</span> Выберите способ перевода</h2>
+									<div class="form-block">
+										<select class="payment-type-select">
+											<option value="card">Банковская карта</option>
+											<option value="transfer">Банковский перевод</option>
+											<option value="qiwi">QIWI</option>
+											<option value="webmoney">WebMoney</option>
+											<option value="yandex">Яндекс.Деньги</option>
+										</select>
+									</div>
+
+
+
+									<div class="payment-type current" data-payment="card">
+										<h2><span>5.3</span> Данные карты</h2>
+										
+										<div class="card-block-hidden">
+											<div class="form-block">
+												<div class="form-label">
+													<label for="card-real-number">Номер карты</label>
+												</div>
+												<div class="form-input">
+													<input type="text" id="card-real-number" class="form-text" value="0000 0000 0000 0000">
+												</div>
+											</div>
+
+											<div class="form-block">
+												<div class="form-label">
+													<label for="card-real-period">Номер карты</label>
+												</div>
+												<div class="form-input form-card-period clearfix">
+													<select id="card-real-period" data-placeholder="ДД">
+														<option></option>
+														<option>01</option>
+														<option>02</option>
+														<option>03</option>
+														<option>04</option>
+														<option>05</option>
+														<option>06</option>
+														<option>07</option>
+														<option>08</option>
+														<option>09</option>
+														<option>10</option>
+														<option>11</option>
+														<option>12</option>
+														<option>13</option>
+														<option>14</option>
+														<option>15</option>
+														<option>16</option>
+														<option>17</option>
+														<option>18</option>
+														<option>19</option>
+														<option>20</option>
+														<option>21</option>
+														<option>22</option>
+														<option>23</option>
+														<option>24</option>
+														<option>25</option>
+														<option>26</option>
+														<option>27</option>
+														<option>28</option>
+														<option>29</option>
+														<option>30</option>
+														<option>31</option>
+													</select>
+													<select data-placeholder="ММ" id="card-real-period-month">
+														<option></option>
+														<option>01</option>
+														<option>02</option>
+														<option>03</option>
+														<option>04</option>
+														<option>05</option>
+														<option>06</option>
+														<option>07</option>
+														<option>08</option>
+														<option>09</option>
+														<option>10</option>
+														<option>11</option>
+														<option>12</option>
+													</select>
+												</div>
+											</div>
+
+											<div class="form-block">
+												<div class="form-label">
+													<label for="card-real-holder">Фамилия, имя</label>
+												</div>
+												<div class="form-input">
+													<input type="text" id="card-real-holder" class="form-text" placeholder="IVANOV IVAN">
+												</div>
+											</div>
+
+											<div class="form-block">
+												<div class="form-label">
+													<label for="card-real-cvv">CVV/CVC</label>
+												</div>
+												<div class="form-input">
+													<input type="text" id="card-real-cvv" class="form-text form-hint-visible" placeholder="CVV/CVC" maxlength="3">
+													<div class="hint">
+														<div class="icon">?</div>
+														<div class="hint-text"><div>Со счета Вашей карты будет списана контрольная сумма, но не более 10 рублей, которую мы возвратим сразу после подтверждения Вашей карты</div></div>
+													</div>
+												</div>
 											</div>
 										</div>
 
-										<div class="form-block">
-											<div class="form-label">
-												<label for="card-real-period">Номер карты</label>
-											</div>
-											<div class="form-input form-card-period clearfix">
-												<select id="card-real-period" data-placeholder="ДД">
+										<div class="card-block">
+											<div class="card-content">
+												<label for="card-number" class="card-number">Номер карты</label>
+												<input type="text" class="card-text card-number card-number-1" placeholder="0000" id="card-number" maxlength="4">
+												<input type="text" class="card-text card-number card-number-2" placeholder="0000" maxlength="4">
+												<input type="text" class="card-text card-number card-number-3" placeholder="0000" maxlength="4">
+												<input type="text" class="card-text card-number card-number-4" placeholder="0000" maxlength="4">
+
+												<label for="card-period" class="card-period">Срок действия</label>
+												<select class="card-select card-period card-period-1" id="card-period" data-placeholder="00">
 													<option></option>
 													<option>01</option>
 													<option>02</option>
@@ -1030,7 +1258,7 @@
 													<option>30</option>
 													<option>31</option>
 												</select>
-												<select data-placeholder="ММ" id="card-real-period-month">
+												<select class="card-select card-period card-period-2" id="card-period-month" data-placeholder="00">
 													<option></option>
 													<option>01</option>
 													<option>02</option>
@@ -1045,296 +1273,183 @@
 													<option>11</option>
 													<option>12</option>
 												</select>
-											</div>
-										</div>
 
-										<div class="form-block">
-											<div class="form-label">
-												<label for="card-real-holder">Фамилия, имя</label>
-											</div>
-											<div class="form-input">
-												<input type="text" id="card-real-holder" class="form-text" placeholder="IVANOV IVAN">
-											</div>
-										</div>
+												<label for="card-holder" class="card-holder">Фамилия, имя</label>
+												<input type="text" class="card-text card-holder" placeholder="Ivanov Ivan" id="card-holder">
 
-										<div class="form-block">
-											<div class="form-label">
-												<label for="card-real-cvv">CVV/CVC</label>
-											</div>
-											<div class="form-input">
-												<input type="text" id="card-real-cvv" class="form-text" placeholder="CVV/CVC" maxlength="3">
+												<input type="text" id="card-cvv" class="card-text card-cvv form-hint-visible" placeholder="CVV/CVC" maxlength="3">
+
 												<div class="hint">
 													<div class="icon">?</div>
-													<div class="hint-text"><div>Укажите CVV/CVC</div></div>
+													<div class="hint-text"><div>Со счета Вашей карты будет списана контрольная сумма, но не более 10 рублей, которую мы возвратим сразу после подтверждения Вашей карты</div></div>
+												</div>
+											</div>
+
+											<div class="card-design">
+												<div class="above"></div>
+												<div class="line"></div>
+												<div class="under"></div>
+											</div>
+
+										</div>
+									</div>
+
+
+									<div class="payment-type" data-payment="transfer">
+										<h2><span>5.3</span> Данные перевода</h2>
+
+										<div class="form-block">
+											<div class="form-label">
+												<label for="form-surname-transfer">Фамилия</label>
+											</div>
+											<div class="form-input">
+												<input type="text" id="form-surname-transfer" class="form-text" value="Иванов" readonly>
+											</div>
+										</div>
+
+										<div class="form-block">
+											<div class="form-label">
+												<label for="form-name-transfer">Имя</label>
+											</div>
+											<div class="form-input">
+												<input type="text" id="form-name-transfer" class="form-text" value="Иван" readonly>
+											</div>
+										</div>
+
+										<div class="form-block">
+											<div class="form-label">
+												<label for="form-middlename-transfer">Отчество</label>
+											</div>
+											<div class="form-input">
+												<input type="text" id="form-middlename-transfer" class="form-text" value="Иванович" readonly>
+											</div>
+										</div>
+
+										<div class="form-block">
+											<div class="form-label">
+												<label for="form-number-transfer">Номер счета</label>
+											</div>
+											<div class="form-input">
+												<input type="text" id="form-number-transfer" class="form-text" placeholder="000000000000000000000" maxlength="21">
+												<div class="hint">
+													<div class="icon">?</div>
+													<div class="hint-text"><div>Укажите номер счета</div></div>
+												</div>
+											</div>
+										</div>
+
+										<div class="form-block">
+											<div class="form-label">
+												<label for="form-bik-transfer">БИК</label>
+											</div>
+											<div class="form-input">
+												<input type="text" id="form-bik-transfer" class="form-text" placeholder="0000000000" maxlength="10">
+												<div class="hint">
+													<div class="icon">?</div>
+													<div class="hint-text"><div>Укажите БИК</div></div>
+												</div>
+											</div>
+										</div>
+
+										<div class="form-block">
+											<div class="form-label">
+												<label for="form-rd-transfer">Р/С</label>
+											</div>
+											<div class="form-input">
+												<input type="text" id="form-rs-transfer" class="form-text" placeholder="000000000000000000000" maxlength="21">
+												<div class="hint">
+													<div class="icon">?</div>
+													<div class="hint-text"><div>Укажите р/с</div></div>
+												</div>
+											</div>
+										</div>
+
+										<div class="form-block">
+											<div class="form-label">
+												<label for="form-ks-transfer">К/С</label>
+											</div>
+											<div class="form-input">
+												<input type="text" id="form-ks-transfer" class="form-text" placeholder="000000000000000000000" maxlength="21">
+												<div class="hint">
+													<div class="icon">?</div>
+													<div class="hint-text"><div>Укажите к/с</div></div>
+												</div>
+											</div>
+										</div>
+
+										<div class="form-block">
+											<select>
+												<option>Название банка</option>
+												<option>АльфаБанк</option>
+												<option>Сбербанк</option>
+											</select>
+										</div>
+
+									</div>
+
+									<div class="payment-type" data-payment="qiwi">
+										<h2><span>5.3</span> Данные перевода</h2>
+
+										<div class="form-block">
+											<div class="form-label">
+												<label for="form-qiwi">Номер кошелька</label>
+											</div>
+											<div class="form-input">
+												<input type="text" id="form-qiwi" class="form-text" placeholder="+7 (900) 000-00-00" maxlength="21">
+												<div class="hint">
+													<div class="icon">?</div>
+													<div class="hint-text"><div>Укажите номер кошелька</div></div>
 												</div>
 											</div>
 										</div>
 									</div>
 
-									<div class="card-block">
-										<div class="card-content">
-											<label for="card-number" class="card-number">Номер карты</label>
-											<input type="text" class="card-text card-number card-number-1" placeholder="0000" id="card-number" maxlength="4">
-											<input type="text" class="card-text card-number card-number-2" placeholder="0000" maxlength="4">
-											<input type="text" class="card-text card-number card-number-3" placeholder="0000" maxlength="4">
-											<input type="text" class="card-text card-number card-number-4" placeholder="0000" maxlength="4">
+									<div class="payment-type" data-payment="webmoney">
+										<h2><span>5.2</span> Данные перевода</h2>
 
-											<label for="card-period" class="card-period">Срок действия</label>
-											<select class="card-select card-period card-period-1" id="card-period" data-placeholder="00">
-												<option></option>
-												<option>01</option>
-												<option>02</option>
-												<option>03</option>
-												<option>04</option>
-												<option>05</option>
-												<option>06</option>
-												<option>07</option>
-												<option>08</option>
-												<option>09</option>
-												<option>10</option>
-												<option>11</option>
-												<option>12</option>
-												<option>13</option>
-												<option>14</option>
-												<option>15</option>
-												<option>16</option>
-												<option>17</option>
-												<option>18</option>
-												<option>19</option>
-												<option>20</option>
-												<option>21</option>
-												<option>22</option>
-												<option>23</option>
-												<option>24</option>
-												<option>25</option>
-												<option>26</option>
-												<option>27</option>
-												<option>28</option>
-												<option>29</option>
-												<option>30</option>
-												<option>31</option>
-											</select>
-											<select class="card-select card-period card-period-2" id="card-period-month" data-placeholder="00">
-												<option></option>
-												<option>01</option>
-												<option>02</option>
-												<option>03</option>
-												<option>04</option>
-												<option>05</option>
-												<option>06</option>
-												<option>07</option>
-												<option>08</option>
-												<option>09</option>
-												<option>10</option>
-												<option>11</option>
-												<option>12</option>
-											</select>
-
-											<label for="card-holder" class="card-holder">Фамилия, имя</label>
-											<input type="text" class="card-text card-holder" placeholder="Ivanov Ivan" id="card-holder">
-
-											<input type="text" id="card-cvv" class="card-text card-cvv" placeholder="CVV/CVC" maxlength="3">
-
-											<div class="hint">
-												<div class="icon">?</div>
-												<div class="hint-text"><div>Укажите CVV/CVC</div></div>
+										<div class="form-block">
+											<div class="form-label">
+												<label for="form-webmoney">Номер кошелька</label>
 											</div>
-										</div>
-
-										<div class="card-design">
-											<div class="above"></div>
-											<div class="line"></div>
-											<div class="under"></div>
-										</div>
-
-									</div>
-
-									<div class="warning">
-										Со счета Вашей карты будет списана контрольная сумма, которую мы возвратим сразу после подтверждения Вашей карты. <a href="#" class="fake-link">Подробнее</a>
-									</div>
-								</div>
-
-
-								<div class="payment-type" data-payment="transfer">
-									<h2><span>5.2</span> Данные перевода</h2>
-
-									<div class="form-block">
-										<div class="form-label">
-											<label for="form-surname-transfer">Фамилия</label>
-										</div>
-										<div class="form-input">
-											<input type="text" id="form-surname-transfer" class="form-text" value="Иванов" readonly>
-										</div>
-									</div>
-
-									<div class="form-block">
-										<div class="form-label">
-											<label for="form-name-transfer">Имя</label>
-										</div>
-										<div class="form-input">
-											<input type="text" id="form-name-transfer" class="form-text" value="Иван" readonly>
-										</div>
-									</div>
-
-									<div class="form-block">
-										<div class="form-label">
-											<label for="form-middlename-transfer">Отчество</label>
-										</div>
-										<div class="form-input">
-											<input type="text" id="form-middlename-transfer" class="form-text" value="Иванович" readonly>
-										</div>
-									</div>
-
-									<div class="form-block">
-										<div class="form-label">
-											<label for="form-number-transfer">Номер счета</label>
-										</div>
-										<div class="form-input">
-											<input type="text" id="form-number-transfer" class="form-text" placeholder="000000000000000000000" maxlength="21">
-											<div class="hint">
-												<div class="icon">?</div>
-												<div class="hint-text"><div>Укажите номер счета</div></div>
+											<div class="form-input">
+												<input type="text" id="form-webmoney" class="form-text" placeholder="R000000000000" maxlength="21">
+												<div class="hint">
+													<div class="icon">?</div>
+													<div class="hint-text"><div>Укажите номер кошелька</div></div>
+												</div>
 											</div>
 										</div>
 									</div>
 
-									<div class="form-block">
-										<div class="form-label">
-											<label for="form-bik-transfer">БИК</label>
-										</div>
-										<div class="form-input">
-											<input type="text" id="form-bik-transfer" class="form-text" placeholder="0000000000" maxlength="10">
-											<div class="hint">
-												<div class="icon">?</div>
-												<div class="hint-text"><div>Укажите БИК</div></div>
+									<div class="payment-type" data-payment="yandex">
+										<h2><span>5.3</span> Данные перевода</h2>
+
+										<div class="form-block">
+											<div class="form-label">
+												<label for="form-yandex">Номер кошелька</label>
+											</div>
+											<div class="form-input">
+												<input type="text" id="form-yandex" class="form-text" placeholder="00000000000000000" maxlength="21">
+												<div class="hint">
+													<div class="icon">?</div>
+													<div class="hint-text"><div>Укажите номер кошелька</div></div>
+												</div>
 											</div>
 										</div>
 									</div>
 
-									<div class="form-block">
-										<div class="form-label">
-											<label for="form-rd-transfer">Р/С</label>
-										</div>
-										<div class="form-input">
-											<input type="text" id="form-rs-transfer" class="form-text" placeholder="000000000000000000000" maxlength="21">
-											<div class="hint">
-												<div class="icon">?</div>
-												<div class="hint-text"><div>Укажите р/с</div></div>
-											</div>
-										</div>
+									
+
+									
+							
+
+
+
+									<div class="form-submit clearfix">
+										<a href="thanks.html" class="btn btn-next" onclick="ga('send', 'pageview', '/next6');"><span>Оформить займ</span></a>
+										<a href="#" class="back-link"><span>Назад</span></a>
 									</div>
 
-									<div class="form-block">
-										<div class="form-label">
-											<label for="form-ks-transfer">К/С</label>
-										</div>
-										<div class="form-input">
-											<input type="text" id="form-ks-transfer" class="form-text" placeholder="000000000000000000000" maxlength="21">
-											<div class="hint">
-												<div class="icon">?</div>
-												<div class="hint-text"><div>Укажите к/с</div></div>
-											</div>
-										</div>
-									</div>
-
-									<div class="form-block">
-										<select>
-											<option>Название банка</option>
-											<option>АльфаБанк</option>
-											<option>Сбербанк</option>
-										</select>
-									</div>
-
-								</div>
-
-								<div class="payment-type" data-payment="qiwi">
-									<h2><span>5.2</span> Данные перевода</h2>
-
-									<div class="form-block">
-										<div class="form-label">
-											<label for="form-qiwi">Номер кошелька</label>
-										</div>
-										<div class="form-input">
-											<input type="text" id="form-qiwi" class="form-text" placeholder="+7 (900) 000-00-00" maxlength="21">
-											<div class="hint">
-												<div class="icon">?</div>
-												<div class="hint-text"><div>Укажите номер кошелька</div></div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="payment-type" data-payment="webmoney">
-									<h2><span>5.2</span> Данные перевода</h2>
-
-									<div class="form-block">
-										<div class="form-label">
-											<label for="form-webmoney">Номер кошелька</label>
-										</div>
-										<div class="form-input">
-											<input type="text" id="form-webmoney" class="form-text" placeholder="R000000000000" maxlength="21">
-											<div class="hint">
-												<div class="icon">?</div>
-												<div class="hint-text"><div>Укажите номер кошелька</div></div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="payment-type" data-payment="yandex">
-									<h2><span>5.2</span> Данные перевода</h2>
-
-									<div class="form-block">
-										<div class="form-label">
-											<label for="form-yandex">Номер кошелька</label>
-										</div>
-										<div class="form-input">
-											<input type="text" id="form-yandex" class="form-text" placeholder="00000000000000000" maxlength="21">
-											<div class="hint">
-												<div class="icon">?</div>
-												<div class="hint-text"><div>Укажите номер кошелька</div></div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								
-
-								
-								<h2><span>5.3</span> Публичная оферта</h2>
-
-								<div class="form-block form-block_checkblock form-oferta">
-									<label class="checkblock">
-										<input type="checkbox">
-										<span>Я соглашаюсь с <a href="#license" class="fake-link various">условиями публичной оферты</a></span>
-									</label>
-								</div>
-
-								<div class="form-block form-sms">
-									<div class="form-label">
-										<label for="form-sms-confirm">Подтверждение операции при помощи SMS</label>
-									</div>
-									<div class="form-input form-input_sms-confirm">
-										<input type="text" id="form-sms-confirm" class="form-text"> 
-										<div class="hint">
-											<div class="icon">?</div>
-											<div class="hint-text"><div>Введите код из SMS</div></div>
-										</div>
-									</div>
-								</div>
-
-								<div class="license" id="license">
-									<div class="fancy-title">Публичная оферта</div>
-									<div class="fancy-content">
-										<p>Согласно пункту 1 статьи 435 Гражданского кодекса РФ офертой признаётся адресованное одному или нескольким конкретным лицам предложение, которое достаточно определённо и выражает намерение лица, сделавшего предложение, считать себя заключившим договор с адресатом, которым будет принято предложение. Оферта должна содержать существенные условия договора.</p>
-										<p>Ст. 11 Федерального закона О рекламе» гласит: «Если в соответствии с Гражданским кодексом Российской Федерации реклама признается офертой, такая оферта действует в течение двух месяцев со дня распространения рекламы при условии, что в ней не указан иной срок».</p>
-										<p>Во многих европейских странах оферта должна содержать все существенные условия договора (например, в договоре купли-продажи существенным является предмет и цена). В англо-американском праве оферта должна быть не столько определённой, сколько определимой, то есть получатель должен иметь возможность понимать все существенные условия, но сами они могут не оговариваться. Например, цена в оферте может не указываться, и если такая оферта акцептуется, то договор считается заключённым на условиях «разумной цены».</p>
-									</div>
-								</div>
-
-								<div class="form-submit clearfix">
-									<a href="thanks.html" class="btn btn-next" onclick="ga('send', 'pageview', '/next6');"><span>Оформить займ</span></a>
-									<a href="#" class="back-link"><span>Назад</span></a>
 								</div>
 							</div>
 							<!-- Конец пятого шага -->

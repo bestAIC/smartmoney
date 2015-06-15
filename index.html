@@ -16,6 +16,7 @@
 		<script src="js/jquery.jscrollpane.min.js"></script>
 		<script src="js/jquery.flipping_gallery.min.js"></script>
 		<script src="js/jquery.ui.touch-punch.min.js"></script>
+		<script src="js/jquery.zclip.min.js"></script>
 		<script src="js/scripts.js?v=4"></script>
 		<!--[if lt IE 9]> 
 		<script src="js/html5.js"></script> 
@@ -122,93 +123,103 @@
 		<!-- Конец обратной связи -->
 		
 		<!-- Обратный звонок -->
-		<div class="top-area" data-id="cb-call">
-			<div class="line__long">
-				<div class="callback callback-form callback-call clearfix">
-					<div class="close"></div>
-					<nav>
-						<a href="#" class="cb-call current"><span>Обратный звонок</span></a>
-						<a href="#" class="cb-form top-area-link" data-id="cb-form"><span>Обратная связь</span></a>
-						<a href="faq.html" class="cb-faq"><span>Ответы на вопросы</span></a>
-					</nav>
-					<div class="callback-container">
-						<div class="callback-form-top">
-							<div class="callback-form">
-								<label for="cb-call-name">Ваше имя</label>
-								<input type="text" class="form-text" id="cb-call-name" placeholder="Иван Петров">
-							</div>
-							<div class="callback-form">
-								<label for="cb-call-phone">Телефон</label>
-								<input type="text" class="form-text" id="cb-call-phone" placeholder="+7 (123) 45-67-89">
-							</div>
-						</div>
-						
-						<form action="#">
-						<div class="callback-form-top">
-							<div class="callback-form">
-								<label for="cb-call-time">Время звонка</label>
-								<div class="radios">
-									<label>
-										<input type="radio" name="cb-call-time" checked>
-										<span>сейчас</span>
-									</label>
-									<label>
-										<input type="radio" name="cb-call-time">
-										<span>назначить время</span>
-									</label>
+			<div class="top-area" data-id="cb-call">
+				<div class="line__long">
+					<div class="callback callback-form callback-call clearfix">
+						<div class="close"></div>
+						<nav>
+							<a href="#" class="cb-call current"><span>Обратный звонок</span></a>
+							<a href="#" class="cb-form top-area-link" data-id="cb-form"><span>Обратная связь</span></a>
+							<a href="faq.html" class="cb-faq"><span>Ответы на вопросы</span></a>
+						</nav>
+						<div class="callback-container">
+							<form method="post" action="#">
+							<div class="callback-form-top">
+								<div class="callback-form">
+									<label for="cb-call-name">Ваше имя</label>
+									<input type="text" class="form-text" id="cb-call-name" placeholder="Иван Петров">
+								</div>
+								<div class="callback-form">
+									<label for="cb-call-phone">Телефон</label>
+									<input type="text" class="form-text" id="cb-call-phone" placeholder="+7 (123) 45-67-89">
 								</div>
 							</div>
-							<div class="callback-form">
-								<button type="submit" class="btn"><span>Позвоните мне</span></button>
+							
+							
+							<div class="callback-form-top clearfix">
+								<div class="callback-form form-block">
+									<select data-placeholder="Время звонка">
+										<option></option>
+										<option>10:00 — 11:00</option>
+										<option>12:00 — 13:00</option>
+										<option>13:00 — 14:00</option>
+										<option>15:00 — 16:00</option>
+										<option>16:00 — 17:00</option>
+										<option>17:00 — 18:00</option>
+									</select>
+								</div>
+								<div class="callback-form">
+									<button type="submit" class="btn"><span>Позвоните мне</span></button>
+								</div>
 							</div>
+							</form>
 						</div>
-						</form>
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- Конец обратного звонка -->
+			<!-- Конец обратного звонка -->
 
-	
-		<!-- Авторизация -->
-		<div class="top-area" data-id="cb-login">
-			<div class="line__long">
-				<div class="callback callback-login clearfix">
-					<div class="close"></div>
-					<div class="callback-container">
-						
-						<div class="cb-column">
-							<label class="label" for="cb-login-email">Электронная почта</label>
-							<input type="text" class="form-text" id="cb-login-email">
-							<footer>
-								<a href="#">Вход по телефону</a>
-							</footer>
-						</div>
+		
+			<!-- Авторизация -->
+			<div class="top-area" data-id="cb-login">
+				<div class="line__long">
+					<form method="post" action="profile.html">
+					<div class="callback callback-login clearfix">
+						<div class="close"></div>
+						<div class="callback-container">
+							
+							<div class="cb-column">
+								<label class="label" for="cb-login-email">Электронная почта</label>
+								<input type="text" class="form-text" id="cb-login-email">
+								<footer>
+									<div class="toggle-form">
+										<label class="current">
+											<input type="radio" id="login-form" type-link="profile.html" type-id="first">
+											<span>Клиент</span>
+										</label>
+										<div class="toggler"></div>
+										<label>
+											<input type="radio" id="login-form" type-link="partner-profile.html" type-id="last">
+											<span>Партнер</span>
+										</label>
+									</div>
+								</footer>
+							</div>
 
-						<div class="cb-column">
-							<label class="label" for="cb-login-password">Пароль</label>
-							<input type="text" class="form-text" id="cb-login-password">
-							<footer>
-								<a href="#">Забыли пароль?</a>
-							</footer>
-						</div>
-						
-						<div class="cb-column cb-column__last">
-							<label class="label">&nbsp;</label>
-							<a href="profile.html" class="btn"><span>Войти</span></a>
-							<footer>
-								<label class="checkbox">
-									<input type="checkbox" checked>
-									<span>Запомнить меня</span>
-								</label>
-							</footer>
-						</div>
+							<div class="cb-column">
+								<label class="label" for="cb-login-password">Пароль</label>
+								<input type="text" class="form-text" id="cb-login-password">
+								<footer>
+									<a href="recovery.html">Забыли пароль?</a>
+								</footer>
+							</div>
+							
+							<div class="cb-column cb-column__last">
+								<label class="label">&nbsp;</label>
+								<a href="profile.html" class="btn"><span>Войти</span></a>
+								<footer>
+									<label class="checkbox">
+										<input type="checkbox" checked>
+										<span>Запомнить меня</span>
+									</label>
+								</footer>
+							</div>
 
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- Конец авторизации -->
+			<!-- Конец авторизации -->
 
 	</div>
 	<!-- Конец верхних всплывашек -->
@@ -307,7 +318,7 @@
 						<div class="errors"></div>
 
 						<footer class="clearfix">
-							<a href="application.html" class="btn"><span>Оформить</span></a>
+							<a href="application.html" class="btn"><span>Оформить на сайте</span></a>
 							<div class="count count-first">
 								<h4>К возврату</h4>
 								<strong><span class="num">11700</span> <span class="unit unit__currency"><font>Р</font></span></strong>
@@ -812,7 +823,7 @@
 					</div>
 
 					<footer class="clearfix">
-						<a href="application.html" class="btn"><span>Оформить</span></a>
+						<a href="application.html" class="btn"><span>Оформить на сайте</span></a>
 						<div class="count count-first">
 							<h4>К возврату</h4>
 							<strong><span class="num">11700</span> <span class="unit unit__currency"><font>Р</font></span></strong>
