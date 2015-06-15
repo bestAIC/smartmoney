@@ -5622,9 +5622,7 @@ body {
 	padding: 45px 60px;
 }
 
-.list li {
-	margin-top: 30px;
-}
+
 .list li:first-child {
 	margin-top: 0;
 }
