@@ -713,8 +713,9 @@ a.btn-next:after {
 		margin-right: 36px;
 	}
 	.header-left .logo img {
-		width: 149px;
+		width: 136px;
 		height: 21px;
+		top: 20px;
 	}
 	.header-right .profile {
 		margin-right: 0;
