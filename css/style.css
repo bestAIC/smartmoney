@@ -695,6 +695,9 @@ a.btn-next:after {
 	.header-right .profile.logined a span {
 		display: none;
 	}
+	.header-left .nav-link {
+		margin-left: 0;
+	}
 }
 @media screen and (max-width: 690px) {
 	.header-wrapper {
@@ -1042,6 +1045,10 @@ a.btn-next:after {
 .application-form .total .unvariable * {
 	display: inline-block;
 }
+.application-form .total .variable .form-text[readonly] {
+	border-color: #c0cad5;
+	color: rgba(0, 0, 0, .8);
+}
 .application-form .total .variable .money .form-text {
 	width: 94px;
 	padding-left: 18px;
@@ -1309,6 +1316,14 @@ a.btn-next:after {
 	border: none;
 }
 
+.button--white {
+	background: #fff;
+	border-color: #fff;
+}
+.button--white:hover {
+	background: transparent;
+}
+
 
 .application {
 	width: 600px;
@@ -1318,6 +1333,10 @@ a.btn-next:after {
 	color: #3e495b;
 	letter-spacing: -.025em;
 	margin-bottom: 33px;
+}
+.application-sub-title {
+	font: 21px/27px 'Houschka Pro Medium',sans-serif;
+	color: #3e495b;
 }
 .application h2 {
 	font: 30px 'Houschka Pro Bold',sans-serif;
@@ -7294,7 +7313,46 @@ a.aic:after {
 	float: none;
 }
 
+.thank-banner,
+.thank-banner:hover {
+	width: 1000px;
+	height: 300px;
+	background: url('../images/thank-banner.png') no-repeat #2bbad3;
+	border-radius: 4px;
+	margin: 90px auto 0;
+	display: block;
+	padding: 35px 50px;
+	color: #fff;
+}
+.thank-banner .title {
+	font: 54px 'Houschka Pro Light',sans-serif;
+	letter-spacing: .03em;
+	display: block;
+}
+.thank-banner .description {
+	font: 18px/20px 'Houschka Pro DemiBold',sans-serif;
+	text-transform: uppercase;
+	letter-spacing: .06em;
+	margin-top: 13px;
+	display: block;
+	width: 400px;
+}
+.thank-banner .button {
+	display: block;
+	width: 240px;
+	margin-top: 36px;
+	background: #fff;
+	border-color: #fff;
+}
+.thank-banner:hover .button {
+	background: transparent;
+	color: #fff;
+}
+
 @media screen and (max-width: 1180px) {
+	.thank-banner {
+		display: none;
+	}
 	.graph-tab {
 		width: 650px;
 	}

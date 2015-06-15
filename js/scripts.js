@@ -162,17 +162,17 @@ $(document).ready(function() {
 		var $total = $('.application-form .total'),
 			$header = $('.header');
 		if( $(window).width() > 1180 ) {
-			if( $total.parents('.sticky-wrapper').length == 0) {
-				$total.sticky({
-					topSpacing: 115,
-					bottomSpacing: footerHeight
-				});
+			if( ! $total.hasClass('nosticky') ) {
+				if( $total.parents('.sticky-wrapper').length == 0) {
+					$total.sticky({
+						topSpacing: 115,
+						bottomSpacing: footerHeight
+					});
+				}
+				if( $header.parents('.sticky-wrapper').length == 0) {
+					$header.sticky({topSpacing: 0});
+				}
 			}
-			if( $header.parents('.sticky-wrapper').length == 0) {
-				$header.sticky({topSpacing: 0});
-			}
-			
-			
 		} else {
 			$total.unstick();
 			$header.unstick();
@@ -407,7 +407,7 @@ $(document).ready(function() {
 
 
 
-	$('.steps-top').on('click', 'li', function() {
+	$('.steps-top').on('click', 'li:not(.readonly)', function() {
 		var $this = $(this),
 			$steps = $this.parents('.steps'),
 			current = parseFloat( $steps.attr('data-current') ),
