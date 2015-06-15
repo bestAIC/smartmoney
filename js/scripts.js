@@ -32,6 +32,23 @@ $(document).ready(function() {
 		}
 	);
 
+	$('.profile').children('.link').on('click', function() {
+		var $this = $(this),
+			window = $(window).width(),
+			$parent = $this.parents('.profile');
+		if(window < 690) {
+			if($parent.hasClass('opened')) {
+				$parent.removeClass('opened');
+			} else {
+				$parent.addClass('opened');
+			}
+			return false;
+		}
+	});
+	$(window).on('resize', function() {
+		$('.profile').removeClass('opened');
+	})
+
 	// Копирование ссылки в буфер обмена
 	var $yourCode = $('.your-code');
 	if($yourCode.length) {
