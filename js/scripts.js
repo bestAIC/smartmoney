@@ -223,14 +223,13 @@ $(document).ready(function() {
 	$(window).on('scroll', function() {
 		var scroll = $('body').scrollTop(),
 			$steps = $('.steps-container');
-		if(scroll > 0) {
-			$steps.addClass('scrolled');
-
-			if( ! $steps.siblings('.steps-fake').length ) $steps.after('<div class="steps-fake"></div>');
-
-			
-		} else {
-			$steps.removeClass('scrolled').siblings('.steps-fake').remove();
+		if( ! $steps.hasClass('nosticky') ) {
+			if(scroll > 0) {
+				$steps.addClass('scrolled');
+				if( ! $steps.siblings('.steps-fake').length ) $steps.after('<div class="steps-fake"></div>');
+			} else {
+				$steps.removeClass('scrolled').siblings('.steps-fake').remove();
+			}
 		}
 	});
 
