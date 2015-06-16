@@ -844,7 +844,7 @@ $(document).ready(function() {
 			$form = $this.find('.choose-text'),
 			$min = $this.find('.min'),
 			$max = $this.find('.max'),
-			$parent = $this.parents('form'),
+			$parent = $this.parents('.app'),
 			$footer = $parent.find('footer'),
 			$return = $footer.find('.count-first').find('.num'),
 			$to = $footer.find('.count-second').find('.num'),
@@ -853,6 +853,7 @@ $(document).ready(function() {
 			bet = parseFloat( $bet.text() );
 
 		$form.val(value);
+
 		function slideChange(i, elem) {
 			var $errors = $this.parents('.chooses').siblings('.errors'),
 				choosePrice = $(elem).parent().hasClass('choose-price');
