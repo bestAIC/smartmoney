@@ -1494,6 +1494,9 @@ a.btn-next:after {
 	width: auto;
 	display: none;
 }
+.hint-text.wide {
+	min-width: 300px;
+}
 .hint-text:after {
 	content: '';
 	position: absolute;
