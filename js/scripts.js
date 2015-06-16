@@ -114,7 +114,24 @@ $(document).ready(function() {
 			$parent.animate({'margin-left': -600}, 300);
 		}
 	});
-	
+
+
+
+	function checkCloseCredit() {
+		// Функция проверяет закрыт или открыт кредит
+		var $select = $('body').find('.credit-is-open select');
+		$select.each(function() {
+			var $this = $(this),
+				$date = $this.parents('.credit-is-open').siblings('.credit-close-day');
+			if( $this.val() == 0 ) {
+				$date.slideUp();
+			} else {
+				$date.slideDown();
+			}
+		});
+	}
+	checkCloseCredit();
+	$('body').on('change', '.credit-is-open select', checkCloseCredit);
 	
 
 	function resizeSteps() {
@@ -457,18 +474,21 @@ $(document).ready(function() {
 		}
 	});
 
+	
 
 	$('body').on('click', '.add-credit-btn', function() {
 		var $this = $(this),
 			$parent = $this.parents('.credit'),
 			num = parseFloat( $parent.attr('data-credit') ),
 			next = num + 1;
-		$parent.after('<div class="credit" style="display: none;" data-credit="' + next + '"><h2><span>4.3.' + next + '</span> Информация о кредите №' + next + '</h2><div class="form-block"><select><option>Название банка</option><option>АльфаБанк</option><option>Сбербанк</option></select></div><div class="form-block"><select><option>Цель кредита</option><option>Покупка квартиры</option><option>Покупка машины</option><option>Личные нужды</option></select></div><div class="form-block"><div class="form-label"><label for="form-credit-start-' + next + '">Дата получения кредита</label></div><div class="form-input"><div class="datepicker"><input type="text" id="form-credit-start-' + next + '" class="form-text" placeholder="ДД.ММ.ГГГ"></div></div></div><div class="form-block"><div class="form-label"><label for="form-credit-end-' + next + '">Дата закрытия кредита</label></div><div class="form-input"><div class="datepicker"><input type="text" id="form-credit-end-' + next + '" class="form-text" placeholder="ДД.ММ.ГГГ"></div></div></div><div class="form-block"><div class="form-label"><label for="form-credit-total-' + next + '">Сумма кредита</label></div><div class="form-input form-input-money"><input type="text" id="form-credit-total-' + next + '" class="form-text" placeholder="16 000"><div class="radiobox"><label><input type="radio" id="form-credit-total-radio-' + next + '" class="nostyler" checked><span>RUB</span></label><label><input type="radio" id="form-credit-total-radio" class="nostyler"><span>USD</span></label><label><input type="radio" id="form-credit-total-radio-' + next + '" class="nostyler"><span>EUR</span></label></div></div></div><div class="form-block form-block-checklist_small has-credit-delay radio-select"><div class="form-label form-label_top"><label>Была ли просрочка по кредиту?</label></div><label class="radioblock"><input type="radio" name="form-credit-delay-' + next + '" value="true"><span>Да</span></label><label class="radioblock"><input type="radio" name="form-credit-delay-' + next + '" value="false" checked><span>Нет</span></label><select><option>Да</option><option selected>Нет</option></select></div><div class="form-block credit-delay-select"><select><option>Количество дней просрочки</option><option>Один день</option><option>Два дня</option><option>Три дня</option><option>Больше трех дней</option></select></div><div class="form-block add-credit add-credit-more"><buttton class="button button_delete">Удалить кредит</buttton><buttton class="button add add-credit-btn">Добавить кредит</buttton></div></div></div>');
+		$parent.after('<div class="credit" style="display: none;" data-credit="' + next + '"><h2><span>4.3.' + next + '</span> Информация о кредите №' + next + '</h2><div class="form-block credit-is-open"><select><option value="0">Кредит открыт</option><option value="1">Кредит закрыт</option></select></div><div class="form-block"><div class="form-label"><label for="credit-bank-' + next + '">Название банка</label></div><div class="form-input"><input type="text" id="credit-bank-' + next + '" class="form-text autocomplete-field"></div></div><div class="form-block"><select data-placeholder="Цель кредита"><option></option><option>Кредит под обеспечение (под залог)</option><option>Персональный кредит</option><option>Кредит на недвижимость, в т.ч. Ипотека</option><option>Продажа в рассрочку (в точках продаж)</option><option>Кредит на приобретение автомобиля</option><option>Возобновляемый кредит/Кредитная линия</option><option>Кредитная карта</option><option>Карта с овердрафтом</option><option>Счет с овердрафтом</option></select></div><div class="form-block"><div class="form-label"><label for="form-credit-start-' + next + '">Дата получения кредита</label></div><div class="form-input"><div class="datepicker"><input type="text" id="form-credit-start-' + next + '" class="form-text" placeholder="ДД.ММ.ГГГ"></div></div></div><div class="form-block credit-close-day"><div class="form-label"><label for="form-credit-end-' + next + '">Дата закрытия кредита</label></div><div class="form-input"><div class="datepicker"><input type="text" id="form-credit-end-' + next + '" class="form-text" placeholder="ДД.ММ.ГГГ"></div></div></div><div class="form-block"><div class="form-label"><label for="form-credit-total-' + next + '">Сумма кредита</label></div><div class="form-input form-input-money"><input type="text" id="form-credit-total-' + next + '" class="form-text" placeholder="16 000"><div class="radiobox"><label><input type="radio" id="form-credit-total-radio-' + next + '" class="nostyler" checked><span>RUB</span></label><label><input type="radio" id="form-credit-total-radio" class="nostyler"><span>USD</span></label><label><input type="radio" id="form-credit-total-radio-' + next + '" class="nostyler"><span>EUR</span></label></div></div></div><div class="form-block form-block-checklist_small has-credit-delay radio-select"><div class="form-label form-label_top"><label>Была ли просрочка по кредиту?</label></div><label class="radioblock"><input type="radio" name="form-credit-delay-' + next + '" value="true"><span>Да</span></label><label class="radioblock"><input type="radio" name="form-credit-delay-' + next + '" value="false" checked><span>Нет</span></label><select><option>Да</option><option selected>Нет</option></select></div><div class="form-block credit-delay-select"><select data-placeholder="Количество дней просрочки"><option></option><option>1 — 30 дней просроченной задолженности</option><option>31 — 60 дней просроченной задолженности</option><option>61 — 90 дней просроченной задолженности</option><option>91 — 120 дней просроченной задолженности</option><option>121 — 150 дней просроченной задолженности</option><option>151 — 180 дней просроченной задолженности</option><option>181 и более дней просроченной задолженности</option><option>Неуплата</option><option>Тяжба</option><option>Списан</option></select></div><div class="form-block add-credit add-credit-more"><buttton class="button button_delete">Удалить кредит</buttton><buttton class="button add add-credit-btn">Добавить кредит</buttton></div></div></div>');
 		setTimeout(function() {
 			$('select, input[type="radio"]:not(.nostyler), input[type="checkbox"]').styler();
 		}, 1);
 		initRadiobox();
 		initDatepicker();
+		checkAutocomplete();
+		checkCloseCredit();
 		$this.parent().hide(); // Прячем кнопку «Добавить кредит»
 		$parent.siblings('.credit').slideDown();
 	});
@@ -1263,6 +1283,19 @@ $(document).ready(function() {
 	});
 
 
+	function checkAutocomplete() {
+		// Автокомплит
+		var $filed = $('body').find('.autocomplete-field');
+		$filed.each(function() {
+			var	banksList = ['Абсолют Банк', 'Авангард', 'Агропромкредит', 'Адмиралтейский', 'Азиатско-Тихоокеанский Банк', 'АйМаниБанк', 'Ак Барс', 'АктивКапитал Банк', 'Альфа-Банк', 'Балтинвестбанк', 'Банк «МБА-Москва»', 'Банк Жилищного Финансирования', 'Банк Интеза', 'Банк ИТБ', 'Банк Москвы', 'Бинбанк', 'БКС — Инвестиционный Банк', 'БыстроБанк', 'Внешпромбанк', 'Восточный Экспресс Банк', 'ВТБ', 'ВТБ 24', 'ВУЗ-Банк', 'Выборг-Банк', 'Вятич', 'Газпромбанк', 'Гута-Банк', 'ДельтаКредит', 'Дил-Банк', 'Екатеринбург', 'Запсибкомбанк'];
+			$(this).autocomplete({
+				source: banksList
+			});
+		});
+	}
+	checkAutocomplete();
+
+
 
 
 
@@ -1597,7 +1630,7 @@ $(document).ready(function() {
 		setTimeout(function() {
 			$rotation.find('select').trigger('refresh');
 		}, 1)
- 	});
+	});
 
 
 	
@@ -1840,6 +1873,9 @@ function hasCreditDelay() {
 		} else {
 			$select.slideUp();
 		}
+		setTimeout(function() {
+			$('input[type="radio"]').trigger('refresh');
+		}, 1)
 	});
 }
 
