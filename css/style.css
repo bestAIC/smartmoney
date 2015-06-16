@@ -4306,13 +4306,15 @@ a.partner-link:hover {
 .ad .content footer {
 	position: absolute;
 	bottom: 17px;
-	left: 19px;
+	left: 0;
+	width: 100%;
+	padding: 0 19px;
 }
 .ad .content footer a {
 	position: relative;
 	bottom: auto;
 	left: auto;
-	margin-left: 25px;
+	margin-right: 25px;
 }
 .ad .content footer a:hover {
 	color: #1893cd;
@@ -4320,6 +4322,32 @@ a.partner-link:hover {
 .ad .content footer a:first-child {
 	margin-left: 0;
 }
+.ad-list-profile {
+	padding-bottom: 143px;
+	position: relative;
+}
+.ad-list-profile .ad .content a {
+	background: transparent;
+	padding-right: 0;
+}
+.ad-list-profile .ad .content a:last-child {
+	margin-right: 0;
+}
+.ad .content footer .eye {
+	float: right;
+	width: 18px;
+	height: 16px;
+	background: url('../images/eye.png') no-repeat #66d6d5;
+	transition: background-color .3s linear;
+	margin-top: 4px;
+	cursor: pointer;
+}
+.ad .content footer .eye:hover {
+	background-color: #25b8d3;
+}
+
+
+
 .advertisment + .recommendations {
 	margin-top: 24px;
 }
@@ -7009,9 +7037,11 @@ a.aic:after {
 .partner-block {
 	margin-top: 70px;
 	position: relative;
+	padding-bottom: 25px;
 }
 .partner-block:first-child {
 	margin-top: 0;
+	padding-bottom: 0;
 }
 .partner-block h4 {
 	font: 30px 'Houschka Pro Bold',sans-serif;
@@ -7147,13 +7177,31 @@ a.aic:after {
 	width: 720px;
 }
 .partner-banner {
-	position: absolute;
-	top: 0;
-	right: 48px;
-	padding: 32px 30px 22px;
+	padding: 32px 30px;
 	background: #fff;
 	border: 2px solid #e1e3e4;
 	border-radius: 5px;
+	display: none;
+}
+.partner-banner img {
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+}
+.partner-banner-vertical {
+	position: absolute;
+	top: 8px;
+	right: 48px;
+	width: 200px;
+}
+.partner-banner-horisontal {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	max-width: 680px;
+	height: 128px;
+	text-align: center;
 }
 .partner-form .form-text {
 	width: 100%;
@@ -7812,7 +7860,10 @@ a.aic:after {
 		display: none;
 	}
 	.partner-banner {
-		display: none;
+		display: none !important;
+	}
+	.ad-list-profile {
+		padding-bottom: 0;
 	}
 	.profile-slider-partners {
 		margin-bottom: 80px;

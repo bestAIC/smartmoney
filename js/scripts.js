@@ -502,6 +502,24 @@ $(document).ready(function() {
 		$this.width( $tab.width() * $tab.length);
 	});
 
+	$('.ad').on('click', '.eye', function() {
+		var $this = $(this),
+			type = $this.attr('data-type'),
+			banner = $this.attr('data-banner'),
+			$vertical = $('.partner-banner-vertical'),
+			$horisontal = $('.partner-banner-horisontal');
+		if( type == 'vertical' ) {
+			$vertical.find('img').attr('src', banner);
+			$vertical.fadeIn();
+			$horisontal.fadeOut();
+		} else if( type == 'horisontal' ) {
+			$horisontal.find('img').attr('src', banner);
+			$horisontal.fadeIn();
+			$vertical.fadeOut();
+		}
+
+	});
+
 
 	function resizeTabs() {
 		$('.tabs-nav .line li.current').each(function() {
