@@ -834,6 +834,11 @@ $(document).ready(function() {
 	});
 
 
+	$('.profile-save-btn').on('click', function() {
+		$(this).siblings('.profile-saved').slideDown();
+	});
+
+
 	$('.choose-block').each(function() {
 		var $this = $(this),
 			min = parseFloat( $this.attr('data-min') ),
