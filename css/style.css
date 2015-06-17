@@ -6160,6 +6160,14 @@ body {
 	margin-bottom: 9px;
 }
 
+.recovery-complete {
+	display: none;
+}
+.recovery-complete .btn {
+	display: inline-block;
+	width: auto;
+}
+
 
 .section-black {
 	background: url('../images/del/section-black.jpg') no-repeat center center #20201f;

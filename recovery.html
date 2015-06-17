@@ -279,37 +279,47 @@
 		<section class="block-back recovery-page">
 			<div class="line__short">
 				<h3>Восстановление пароля</h3>
-				<p>Для восстановления пароля введите ваш номер мобильного телефона или электронную почту,которую вы указывали при регистрации, и нажмите на "восстановить".</p>
+				<div class="recovery-container">
+					<p>Для восстановления пароля введите ваш номер мобильного телефона или электронную почту,которую вы указывали при регистрации, и нажмите на "восстановить".</p>
 
-				<p>Если у вас нет доступа к номеру телефона, привязанному к аккаунту, или вы забыли e-mail, то обратитесь в службу поддержки, написав письмо на <a href="mailto:support@smartmoney.ru">support@smartmoney.ru</a></p>
+					<p>Если у вас нет доступа к номеру телефона, привязанному к аккаунту, или вы забыли e-mail, то обратитесь в службу поддержки, написав письмо на <a href="mailto:support@smartmoney.ru">support@smartmoney.ru</a></p>
 
-				<div class="form-page">
-					<form>
-						<div class="form-block">
-							<div class="form-label">
-								<label for="recovery-login">Телефон <nobr>или e-mail</nobr></label>
+					<div class="form-page">
+						<form action="#" method="post">
+							<div class="form-block">
+								<div class="form-label">
+									<label for="recovery-login">Телефон <nobr>или e-mail</nobr></label>
+								</div>
+								<div class="form-input">
+									<input type="text" id="recovery-login" class="form-text" placeholder="+7 (900) 00-00-00">
+								</div>
 							</div>
-							<div class="form-input">
-								<input type="text" id="recovery-login" class="form-text" placeholder="+7 (900) 00-00-00">
-							</div>
-						</div>
 
-						<div class="form-block">
-							<div class="form-label">
-								<label for="recovery-surname">Фамлилия</label>
+							<div class="form-block">
+								<div class="form-label">
+									<label for="recovery-surname">Фамлилия</label>
+								</div>
+								<div class="form-input">
+									<input type="text" id="recovery-surname" class="form-text" placeholder="Иванов">
+								</div>
 							</div>
-							<div class="form-input">
-								<input type="text" id="recovery-surname" class="form-text" placeholder="Иванов">
-							</div>
-						</div>
 
 
-						<div class="form-submit clearfix">
-							<!-- <div class="form-submit-sent">Спасибо за ваш вопрос</div> -->
-							<button type="submit" class="btn"><span>Восстановить</span></button>
-						</div>
-					</form>
+							<div class="form-submit clearfix">
+								<!-- <div class="form-submit-sent">Спасибо за ваш вопрос</div> -->
+								<button type="submit" class="btn recovery-form"><span>Восстановить</span></button>
+							</div>
+						</form>
+					</div>
 				</div>
+				<div class="recovery-complete">
+					<p>На электронную почту trampampam@gmail.com отправлено письмо. Перейдите по ссылке в письме, чтобы задать новый пароль от вашей учетной записи.</p>
+					<p>Если вы не видите письма, обязательно проверьте папку СПАМ.</p>
+					<a href="index.html" class="btn"><span>Вернуться на главную</span></a>
+				</div>
+
+					
+				
 			</div>
 		</section>
 

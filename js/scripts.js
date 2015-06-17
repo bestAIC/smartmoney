@@ -22,6 +22,12 @@ $(document).ready(function() {
 		$('body').addClass('is-scrolled');
 	});
 
+	$('.recovery-form').on('click', function() {
+		$('.recovery-container').fadeOut(200);
+		$('.recovery-complete').fadeIn(500);
+		return false;
+	});
+
 
 	$('.profile').hover(
 		function() {
