@@ -22,11 +22,29 @@ $(document).ready(function() {
 		$('body').addClass('is-scrolled');
 	});
 
-	$('.recovery-form').on('click', function() {
+	$('.recovery-form').on('submit', function() {
 		$('.recovery-container').fadeOut(200);
 		$('.recovery-complete').fadeIn(500);
 		return false;
 	});
+
+	$('.become-partner').on('click', function() {
+		var top = $('.partner-form').offset().top;
+		console.log(top);
+		$('html, body').stop().animate({
+   			scrollTop: top - 100
+		}, 1000);
+
+		return false;
+	});
+
+
+	$('.form-partner-submit').on('submit', function() {
+		$(this).find('.form-submit-sent').fadeIn();
+		return false;
+	});
+
+	
 
 
 	$('.profile').hover(

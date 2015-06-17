@@ -1525,6 +1525,7 @@ a.btn-next:after {
 	color: rgba(0, 0, 0, .8);
 	width: 240px;
 	min-height: 55px;
+	display: none;
 }
 
 .form-passport-number {
@@ -7238,9 +7239,7 @@ a.aic:after {
 .partner-form .form-block {
 	margin-bottom: 20px;
 }
-.partner-form .form-submit {
-	text-align: left;
-}
+
 
 .partner-block .docs-list {
 	margin-left: 0;
