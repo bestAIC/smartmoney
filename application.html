@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Заявка на кредит: Шаг 1</title>
+		<title>Заявка на кредит</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
 		<link rel="stylesheet" href="css/style.css">
@@ -100,20 +100,25 @@
 							<a href="faq.html" class="cb-faq"><span>Ответы на вопросы</span></a>
 						</nav>
 						<div class="callback-container">
-							<div class="callback-form-top">
-								<div class="callback-form">
-									<label for="cb-form-name">Ваше имя</label>
-									<input type="text" class="form-text" id="cb-form-name" placeholder="Иван Петров">
+							<form method="post" action="#" class="cb-form-form">
+								<div class="callback-form-top">
+									<div class="callback-form">
+										<label for="cb-form-name">Ваше имя</label>
+										<input type="text" class="form-text" id="cb-form-name" placeholder="Иван Петров">
+									</div>
+									<div class="callback-form">
+										<label for="cb-form-email">Ваше E-mail</label>
+										<input type="text" class="form-text" id="cb-form-email" placeholder="mail@example.ru">
+									</div>
 								</div>
-								<div class="callback-form">
-									<label for="cb-form-email">Ваше E-mail</label>
-									<input type="text" class="form-text" id="cb-form-email" placeholder="mail@example.ru">
+								<div class="callback-form-textarea">
+									<textarea class="form-text" placeholder="Комментарий или вопрос"></textarea>
+									<button type="submit"></button>
+									<div class="form-alert form-alert-confirm">
+										Ваше сообщение отправлено. В ближайшее время наши менеджеры ответят вам.
+									</div>
 								</div>
-							</div>
-							<div class="callback-form-textarea">
-								<textarea class="form-text" placeholder="Комментарий или вопрос"></textarea>
-								<button type="submit"></button>
-							</div>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -131,35 +136,38 @@
 							<a href="faq.html" class="cb-faq"><span>Ответы на вопросы</span></a>
 						</nav>
 						<div class="callback-container">
-							<form method="post" action="#">
-							<div class="callback-form-top">
-								<div class="callback-form">
-									<label for="cb-call-name">Ваше имя</label>
-									<input type="text" class="form-text" id="cb-call-name" placeholder="Иван Петров">
+							<form method="post" action="#" class="cb-call-form">
+								<div class="callback-form-top">
+									<div class="callback-form">
+										<label for="cb-call-name">Ваше имя</label>
+										<input type="text" class="form-text" id="cb-call-name" placeholder="Иван Петров">
+									</div>
+									<div class="callback-form">
+										<label for="cb-call-phone">Телефон</label>
+										<input type="text" class="form-text" id="cb-call-phone" placeholder="+7 (123) 45-67-89">
+									</div>
 								</div>
-								<div class="callback-form">
-									<label for="cb-call-phone">Телефон</label>
-									<input type="text" class="form-text" id="cb-call-phone" placeholder="+7 (123) 45-67-89">
+								
+								
+								<div class="callback-form-top clearfix">
+									<div class="callback-form form-block">
+										<select data-placeholder="Время звонка">
+											<option></option>
+											<option>10:00 — 11:00</option>
+											<option>12:00 — 13:00</option>
+											<option>13:00 — 14:00</option>
+											<option>15:00 — 16:00</option>
+											<option>16:00 — 17:00</option>
+											<option>17:00 — 18:00</option>
+										</select>
+									</div>
+									<div class="callback-form callback-form-submit">
+										<button type="submit" class="btn"><span>Позвоните мне</span></button>
+										<div class="form-alert form-alert-confirm">
+											В ближайшее время мы вам позвоним.
+										</div>
+									</div>
 								</div>
-							</div>
-							
-							
-							<div class="callback-form-top clearfix">
-								<div class="callback-form form-block">
-									<select data-placeholder="Время звонка">
-										<option></option>
-										<option>10:00 — 11:00</option>
-										<option>12:00 — 13:00</option>
-										<option>13:00 — 14:00</option>
-										<option>15:00 — 16:00</option>
-										<option>16:00 — 17:00</option>
-										<option>17:00 — 18:00</option>
-									</select>
-								</div>
-								<div class="callback-form">
-									<button type="submit" class="btn"><span>Позвоните мне</span></button>
-								</div>
-							</div>
 							</form>
 						</div>
 					</div>
@@ -1015,67 +1023,67 @@
 												<tbody>
 													<tr>
 														<td>Сумма   кредита (займа) или лимит кредитования и порядок его изменения</td>
-														<td>Описание</td>
+														<td>15 000 рублей</td>
 													</tr>
 													<tr>
 														<td>Срок действия договора, срок возврата кредита (займа)</td>
-														<td>Описание</td>
+														<td>15 дней, 30 июня 2015</td>
 													</tr>
 													<tr>
 														<td>Валюта, в которой предоставляется кредит (заём)</td>
-														<td>Описание</td>
+														<td>Российский рубль</td>
 													</tr>
 													<tr>
 														<td>Процентная ставка (процентные ставки) (в процентах годовых) или порядок ее (их) определения</td>
-														<td>Описание</td>
+														<td>30%</td>
 													</tr>
 													<tr>
 														<td>Порядок  определения курса иностранной  валюты при переводе  денежных средств кредитором третьему  лицу, указанному заемщиком</td>
-														<td>Описание</td>
+														<td>По курсу ЦБ РФ в день выдачи займа</td>
 													</tr>
 													<tr>
 														<td>Количество, размер и периодичность (сроки) платежей заемщика  по договору или порядок  определения этих платежей</td>
-														<td>Описание</td>
+														<td>Раз в неделю по 1000 рублей.</td>
 													</tr>
 													<tr>
 														<td>Порядок изменения количества, размера и периодичности   (сроков) платежей заемщика при частичном  досрочном возврате кредита (займа)</td>
-														<td>Описание</td>
+														<td>Ничего не меняется.</td>
 													</tr>
 													<tr>
 														<td>Способы исполнения заемщиком обязательств по договору по месту нахождения заемщика</td>
-														<td>Описание</td>
+														<td>Оплата производится любым способом</td>
 													</tr>
 													<tr>
 														<td>Бесплатный способ исполнения заемщиком обязательств по договору</td>
-														<td>Описание</td>
+														<td>В кассу</td>
 													</tr>
 													<tr>
 														<td>Обязанность заемщика заключить иные договоры</td>
-														<td>Описание</td>
+														<td>Заемщик не обязан.</td>
 													</tr>
 													<tr>
 														<td>Обязанность заемщика по предоставлению обеспечения исполнения обязательств по договору и требования к такому обеспечению</td>
-														<td>Описание</td>
+														<td>Без обеспечения.</td>
 													</tr>
 													<tr>
 														<td>Цели использования заемщиком потребительского  кредита (займа)</td>
-														<td>Описание</td>
+														<td>Приобретение недвижимости.</td>
 													</tr>
 													<tr>
 														<td>Ответственность заемщика за надлежащее исполнение условий договора, размер неустойки (штрафа, пени) или порядок их определения</td>
-														<td>Описание</td>
+														<td>Штраф 100 рублей за просроченный день.</td>
 													</tr>
 													<tr>
 														<td>Условине о уступке кредитором третьим лицам  прав (требований) по договору</td>
-														<td>Описание</td>
+														<td>Кредитор имеет право.</td>
 													</tr>
 													<tr>
 														<td>Согласие заемщика с общими условиями договора</td>
-														<td>Описание</td>
+														<td>Заемщик согласен.</td>
 													</tr>
 													<tr>
 														<td>Услуги, оказываемые кредитором   заемщику  за отдельную плату и  необходимые для заключения договора, их цена или порядок ее определения, а также согласие заемщика на оказание таких услуг</td>
-														<td>Описание</td>
+														<td>В данном случае нет платных услуг.</td>
 													</tr>
 												</tbody>
 											</table>

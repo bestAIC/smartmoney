@@ -956,7 +956,6 @@ a.btn-next:after {
 	vertical-align: top;
 }
 .oferta-text table td:first-child {
-	width: 30%;
 	padding-right: 15px;
 }
  
@@ -5278,6 +5277,20 @@ body {
 .callback-login .callback-container {
 	background-image: url('../images/cb-login-big.png');
 	padding-right: 0;
+}
+.callback-form-submit {
+	position: relative;
+}
+.form-alert {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	font: 14px 'Houschka Pro DemiBold',sans-serif;
+	margin-top: 10px;
+	display: none;
+}
+.form-alert-confirm {
+	color: #25b9d2;
 }
 .callback-form-top {
 	padding-bottom: 30px;

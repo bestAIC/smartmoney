@@ -227,6 +227,13 @@ $(document).ready(function() {
 	);
 
 
+	$('.cb-call-form, .cb-form-form').on('submit', function() {
+		console.log('Let‘s go!');
+		$(this).find('.form-alert').fadeIn();
+		return false;
+	});
+
+
 	$('.news').on('click', '.new-content h4 a', function() {
 		var $popup = $('.new-popup');
 		$popup.slideDown();
@@ -359,6 +366,9 @@ $(document).ready(function() {
 				$('.steps').attr('id','step-' + next + '').attr('data-current', next);
 				$('html, body').stop().animate({
 					scrollTop: 0
+				}, 500);
+				setTimeout(function() {
+					$('.oferta-text-scroll').jScrollPane();
 				}, 500);
 				return false;
 			}
@@ -1249,7 +1259,6 @@ $(document).ready(function() {
 		var $this = $(this),
 			$text = $this.parents('.oferta-line').find('.oferta-text'),
 			$scroll = $text.find('.oferta-text-scroll');
-		console.log($text);
 		if( $text.is(':visible') ) {
 			$text.slideUp(300);
 		} else {
