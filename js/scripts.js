@@ -1,3 +1,32 @@
+var products = [{
+  productName: 'Повторный',
+  interest: 2.0000,
+  maxAmount: 15000.00,
+  minAmount: 1000.00,
+  maxTerm: 30,
+  minTerm: 1,
+  minFee: 0,
+  available: true
+}, {
+  productName: 'Привилегированный',
+  interest: 1.0000,
+  maxAmount: 30000.00,
+  minAmount: 1000.00,
+  maxTerm: 30,
+  minTerm: 1,
+  minFee: 30000,
+  available: false
+}, {
+  productName: 'Приоритетный',
+  interest: 1.5000,
+  maxAmount: 20000.00,
+  minAmount: 1000.00,
+  maxTerm: 30,
+  minTerm: 1,
+  minFee: 15000,
+  available: false
+}];
+
 $(document).ready(function() {
 // start
 	
@@ -20,6 +49,11 @@ $(document).ready(function() {
 			}
 		}
 		$('body').addClass('is-scrolled');
+	});
+
+	$('.faq-form').on('submit', function() {
+		$(this).find('.for-faq-sent').fadeIn(300);
+		return false;
 	});
 
 	$('.recovery-form').on('submit', function() {
@@ -265,6 +299,7 @@ $(document).ready(function() {
 		$('html, body').stop().animate({
 			scrollTop: 0
 		}, 500);
+        return false;
 	});
 
 	$('body').on('click', '.overlay', function() {
@@ -280,8 +315,10 @@ $(document).ready(function() {
 		$o.css('opacity', 0);
 		setTimeout(function() {
 			$o.remove();
+            $('html, body').stop().animate({
+                scrollTop: $('#news').offset().top - 30
+            }, 500);
 		}, 300);
-
 	}
 
 
@@ -898,7 +935,7 @@ $(document).ready(function() {
 				choosePrice = $(elem).parent().hasClass('choose-price');
 			$form.val(i);
 			if(choosePrice) {
-				if(i >= 9000) {
+				if(i > 9000) {
 					if( ! $errors.find('span').length ) {
 						$errors.append('<span style="display: none;">Сумма свыше 9000 рублей доступна для второго займа</span>');
 						$errors.find('span').fadeIn(500);
@@ -909,11 +946,11 @@ $(document).ready(function() {
 			}
 			var price = parseFloat( $parent.find('.choose-price .choose-text').val() ),
 				day = parseFloat( $parent.find('.choose-day .choose-text').val() ),
-				ret = Math.ceil( price + day * bet ),
+				ret = Math.ceil( price * (bet / 100) * day + price ),
 				today = new Date();
 			today.setDate(today.getDate() + day);
 			var days = ['Воскресенье','Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
-				months = ['января', 'февраля', 'марта', 'мая','июня', 'июля','августа','сентября','октября','гоября','декабря'],
+				months = ['января', 'февраля', 'марта', 'апреля', 'мая','июня', 'июля','августа','сентября','октября','ноября','декабря'],
 				m = today.getMonth(),
 				d = today.getDate();
 			$return.text(ret);
@@ -979,7 +1016,17 @@ $(document).ready(function() {
 
 	});
 
-
+    
+    // Рассчет работы слайдера в партнерах
+    function countPartnerSlider() {
+        var appPayed = parseFloat( $('#app-payed').val() ), // Кол-во оплаченных заявок
+            appApproved = parseFloat ( $('#app-approved').val() ), // Кол-во одобренных заявок
+            orderPayed = 500, // Стоимость оплаченной заявки
+            orderApproved = 150, // Стоимость одобренной заявки
+            reward = (appPayed * orderPayed) + (appApproved * orderApproved); // Вознаграждение
+        $('#app-revard').text(reward);
+    }
+    countPartnerSlider();
 
 
 	// Слайдер в партнерах
@@ -1005,9 +1052,11 @@ $(document).ready(function() {
 			animate: 1100,
 			slide: function( event, ui ) {
 				$form.val(ui.value);
+                countPartnerSlider();
 			},
 			change: function( event, ui ) {
 				$form.val(ui.value);
+                countPartnerSlider();
 			},
 			create: function( event, ui ) {
 				var $this = $(this);
@@ -1017,6 +1066,7 @@ $(document).ready(function() {
 						var newVal = max / 2;
 						$this.slider('value', newVal);
 						$form.val(newVal);
+                        countPartnerSlider();
 					}, 1100
 				);
 			}
@@ -1296,6 +1346,9 @@ $(document).ready(function() {
 
 	$('.btn-next-final').on('click', function() {
 		$('.oferta-confirm').slideDown();
+        setTimeout(function() {
+            $('select').trigger('refresh');
+        }, 1);
 		return false;
 	});
 
@@ -1402,15 +1455,26 @@ $(document).ready(function() {
 			$area = $('.top-area[data-id="' + id + '"]'),
 			$link = $('.top-area-link[data-id="' + id + '"]'),
 			visible = $area.is(':visible');
-		if(! $container.is(':visible')) $container.slideDown();
-		$('.top-area').css('display', 'none');
-		$('.top-area-link').removeClass('current');
-		if(visible) {
-			closeTopArea();
+		console.log($('body').scrollTop() );
+		if( $('body').scrollTop() > 0 ) {
+			$('html, body').stop().animate({scrollTop: 0}, 200);
+			setTimeout(go, 220);
 		} else {
-			$area.fadeIn();
-			$link.addClass('current');
-			$('html, body').stop().animate({scrollTop: 0}, 1000);
+			go()
+		}
+
+		function go() {
+			console.log(1);
+			if(! $container.is(':visible')) $container.slideDown();
+			$('.top-area').css('display', 'none');
+			$('.top-area-link').removeClass('current');
+			if(visible) {
+				closeTopArea();
+			} else {
+				$area.fadeIn();
+				$link.addClass('current');
+				$('html, body').stop().animate({scrollTop: 0}, 1000);
+			}
 		}
 		closeBurger(true);
 		return false;
@@ -1433,7 +1497,7 @@ $(document).ready(function() {
 	$(window).on('scroll', function() {
 		var $container = $('.top-area-container'),
 			top = $(window).scrollTop(),
-			height = $container.height();
+			height = countHeight($container)
 		
 		if( $container.is(':visible') ) {
 			if(top >= height) closeTopArea();

@@ -339,7 +339,8 @@ a.btn-next:after {
 	height: 60px;
 	background: #000;
 	background: rgba(0, 0, 0, 1);
-	z-index: 120;
+	z-index: 203;
+    position: relative;
 }
 .header-wrapper {
 	max-width: 1400px;
@@ -949,14 +950,21 @@ a.btn-next:after {
 	display: none;
 }
 
-.oferta-text table td {
-	font: 16px/27px 'Houschka Pro Medium',sans-serif;
-	letter-spacing: -.05em;
-	color: rgba(62, 73, 91, .6);
-	vertical-align: top;
+
+.oferta-text table {
+    letter-spacing: normal;
+    border-collapse: collapse;
 }
-.oferta-text table td:first-child {
-	padding-right: 15px;
+.oferta-text table td,
+.oferta-text table th {
+    padding: 5px;
+    border: 1px solid rgba(0, 0, 0, .5) !important;
+    text-transform: none;
+    letter-spacing: normal;
+    vertical-align: top;
+    font: 12px/1.5em 'Time New Roman',serif;
+    color: #000;
+    opacity: 1;
 }
  
 
@@ -1849,47 +1857,19 @@ label.card-period {
 	top: 166px;
 	left: 40px;
 }
-.card-select .jq-selectbox__select {
+.card-period.form-text {
 	width: 77px;
-	cursor: pointer;
 	position: relative;
+    border: none;
 }
-.card-select .jq-selectbox__select-text.placeholder {
-	color: rgba(62, 73, 91, .4);
-}
-.card-select .jq-selectbox__trigger {
-	width: 8px;
-	height: 4px;
-	background: url('../images/card-select.png') no-repeat;
-	position: absolute;
-	top: 24px;
-	right: 16px;
-}
-.card-select .jq-selectbox__dropdown {
-	width: 100%;
-	box-shadow: 0 5px 30px rgba(0, 0, 0, .2);
-}
-.card-select .jq-selectbox__dropdown li {
-	font: 17px 'Houschka Pro DemiBold',sans-serif;
-	letter-spacing: -.025em;
-	padding: 15px 18px;
-	color: #3e495b;
-	background: #fff;
-	display: block;
-	cursor: pointer;
-}
-.card-select .jq-selectbox__dropdown li:hover,
-.card-select .jq-selectbox__dropdown li.sel.selected {
-	background: #f5f5f5;
-}
-.card-select.card-period {
+.card-period {
 	position: absolute !important;
 	top: 208px;
 }
-.card-select.card-period.card-period-1 {
+.card-period.card-period-1 {
 	left: 40px;
 }
-.card-select.card-period.card-period-2 {
+.card-period.card-period-2 {
 	left: 137px;
 }
 label.card-holder {
@@ -2196,11 +2176,11 @@ label.card-holder {
 	.form-card-period {
 		background: url('../images/form-card-period.png') no-repeat center center;
 	}
-	.form-card-period .jq-selectbox {
+	.form-card-period .form-text {
 		width: 121px;
 		float: right;
 	}
-	.form-card-period .jq-selectbox:first-child {
+	.form-card-period .form-text:first-child {
 		float: left;
 	}
 	.radio-select .jq-selectbox {
@@ -5193,7 +5173,7 @@ body {
 	padding: 83px 0 85px;
 	display: none;
 	position: relative;
-	z-index: 120;
+	z-index: 204;
 }
 
 .callback {
@@ -6849,7 +6829,7 @@ section.more-info .tabs-line section.tabs-list{
 	background: #fff;
 	width: 100%;
 	padding: 88px 0;
-	z-index: 115;
+	z-index: 201;
 	display: none;
 }
 .new-popup article {
@@ -7341,6 +7321,13 @@ a.aic:after {
 	font: 15px 'Arial',sans-serif;
 	color: rgba(0, 0, 0, .65);
 	margin-top: 6px;
+}
+
+.for-faq-sent {
+	color: #23b5d5;
+	font: 16px 'Houschka Pro DemiBold',sans-serif;
+	margin: 20px 0 0 180px;
+	display: none;
 }
 
 
@@ -9190,6 +9177,9 @@ a.aic:after {
 	}
 	.header-right .profile.opened > .link  * {
 		opacity: 0;
+	}
+	.for-faq-sent {
+		margin-left: 0;
 	}
 
 
