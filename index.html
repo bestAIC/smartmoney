@@ -89,9 +89,9 @@
 		</div>
 		<!-- Конец бутерброда -->
 
-	<!-- Верхние всплывашки -->
-	<div class="top-area-container">
-		<!-- Обратная связь -->
+		<!-- Верхние всплывашки -->
+		<div class="top-area-container">
+			<!-- Обратная связь -->
 			<div class="top-area" data-id="cb-form">
 				<div class="line__long">
 					<div class="callback callback-form clearfix">
@@ -104,7 +104,7 @@
 						<div class="callback-container">
 							<form method="post" action="#" class="cb-form-form">
 								<div class="callback-form-top">
-									<div class="callback-form">
+									<div class="callback-form error">
 										<label for="cb-form-name">Ваше имя</label>
 										<input type="text" class="form-text" id="cb-form-name" placeholder="Иван Петров">
 									</div>
@@ -117,7 +117,7 @@
 									<textarea class="form-text" placeholder="Комментарий или вопрос"></textarea>
 									<button type="submit"></button>
 									<div class="form-alert form-alert-confirm">
-										Ваше сообщение отправлено. В ближайшее время наши менеджеры ответят вам.
+										Ваше сообщение отправлено. В ближайшее время менеджер компании ответит на него.
 									</div>
 								</div>
 							</form>
@@ -140,7 +140,7 @@
 						<div class="callback-container">
 							<form method="post" action="#" class="cb-call-form">
 								<div class="callback-form-top">
-									<div class="callback-form">
+									<div class="callback-form error">
 										<label for="cb-call-name">Ваше имя</label>
 										<input type="text" class="form-text" id="cb-call-name" placeholder="Иван Петров">
 									</div>
@@ -153,7 +153,7 @@
 								
 								<div class="callback-form-top clearfix">
 									<div class="callback-form form-block">
-										<!-- <select data-placeholder="Время звонка">
+										<select data-placeholder="Время звонка">
 											<option></option>
 											<option>10:00 — 11:00</option>
 											<option>12:00 — 13:00</option>
@@ -161,7 +161,7 @@
 											<option>15:00 — 16:00</option>
 											<option>16:00 — 17:00</option>
 											<option>17:00 — 18:00</option>
-										</select> -->
+										</select>
 									</div>
 									<div class="callback-form callback-form-submit">
 										<button type="submit" class="btn"><span>Позвоните мне</span></button>
@@ -230,8 +230,8 @@
 			</div>
 			<!-- Конец авторизации -->
 
-	</div>
-	<!-- Конец верхних всплывашек -->
+		</div>
+		<!-- Конец верхних всплывашек -->
 
 
 	<section class="start">
@@ -290,8 +290,8 @@
 
 				<div class="app">
 					<form action="#">
-						<div class="chooses clearfix">
-							<div class="choose-block clearfix choose-price" data-min="1000" data-max="30000" data-step="1000" data-value="8000">
+						<div class="chooses clearfix" data-product="2">
+							<div class="choose-block clearfix choose-price" data-min="1000" data-max="30000" data-step="1000" data-value="9000">
 								<div class="choose-input">
 									<label for="choose-money">Занять</label>
 									<input type="text" class="choose-text" maxlength="5" id="choose-money" value="9000">
@@ -299,20 +299,20 @@
 								</div>
 								<div class="choose-slider"></div>
 								<div class="choose-hint">
-									<div class="min">1000</div>
-									<div class="max">30 000</div>
+									<div class="min"><span>1000</span></div>
+									<div class="max"><span>30 000</span></div>
 								</div>
 							</div>
-							<div class="choose-block clearfix choose-day" data-min="1" data-max="30" data-step="1" data-value="21">
+							<div class="choose-block clearfix choose-day" data-min="1" data-max="30" data-step="1" data-value="15">
 								<div class="choose-input">
 									<label for="choose-money">на срок</label>
-									<input type="text" class="choose-text" maxlength="2" id="choose-days" value="21">
+									<input type="text" class="choose-text" maxlength="2" id="choose-days" value="15">
 									<span class="choose-unit">день</span>
 								</div>
 								<div class="choose-slider"></div>
 								<div class="choose-hint">
-									<div class="min">1 день</div>
-									<div class="max">30 дней</div>
+									<div class="min"><span>1</span> день</div>
+									<div class="max"><span>30</span> дней</div>
 								</div>
 							</div>
 						</div>
@@ -743,32 +743,32 @@
 
 			<div class="app">
 				<form action="#">
-					<div class="chooses clearfix">
-						<div class="choose-block clearfix choose-price" data-min="1000" data-max="30000" data-step="1000" data-value="8000">
-							<div class="choose-input">
-								<label for="choose-money">Занять</label>
-								<input type="text" class="choose-text" maxlength="5" id="choose-money" value="9000">
-								<span class="choose-unit"><font>Р</font></span>
+					<div class="chooses clearfix" data-product="2">
+							<div class="choose-block clearfix choose-price" data-min="1000" data-max="30000" data-step="1000" data-value="9000">
+								<div class="choose-input">
+									<label for="choose-money">Занять</label>
+									<input type="text" class="choose-text" maxlength="5" id="choose-money" value="9000">
+									<span class="choose-unit"><font>Р</font></span>
+								</div>
+								<div class="choose-slider"></div>
+								<div class="choose-hint">
+									<div class="min"><span>1000</span></div>
+									<div class="max"><span>30 000</span></div>
+								</div>
 							</div>
-							<div class="choose-slider"></div>
-							<div class="choose-hint">
-								<div class="min">1000</div>
-								<div class="max">30 000</div>
+							<div class="choose-block clearfix choose-day" data-min="1" data-max="30" data-step="1" data-value="15">
+								<div class="choose-input">
+									<label for="choose-money">на срок</label>
+									<input type="text" class="choose-text" maxlength="2" id="choose-days" value="15">
+									<span class="choose-unit">день</span>
+								</div>
+								<div class="choose-slider"></div>
+								<div class="choose-hint">
+									<div class="min"><span>1</span> день</div>
+									<div class="max"><span>30</span> дней</div>
+								</div>
 							</div>
 						</div>
-						<div class="choose-block clearfix choose-day" data-min="1" data-max="30" data-step="1" data-value="21">
-							<div class="choose-input">
-								<label for="choose-money">на срок</label>
-								<input type="text" class="choose-text" maxlength="2" id="choose-days" value="21">
-								<span class="choose-unit">день</span>
-							</div>
-							<div class="choose-slider"></div>
-							<div class="choose-hint">
-								<div class="min">1 день</div>
-								<div class="max">30 дней</div>
-							</div>
-						</div>
-					</div>
 
 					<div class="errors">
 					</div>

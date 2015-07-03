@@ -286,7 +286,7 @@ $(document).ready(function() {
 
 
 	$('.cb-call-form, .cb-form-form').on('submit', function() {
-		console.log('Let‘s go!');
+		$(this).find('.callback-form-textarea .form-text, button').slideUp();
 		$(this).find('.form-alert').fadeIn();
 		return false;
 	});
@@ -900,7 +900,7 @@ $(document).ready(function() {
 			$content.slideDown(300);
 		}
 		setTimeout(function() {
-			$parent.removeClass('opened');
+			$parent.removeClass('opened'); 
 		}, 300);
 	});
 
@@ -908,6 +908,34 @@ $(document).ready(function() {
 	$('.profile-save-btn').on('click', function() {
 		$(this).siblings('.profile-saved').slideDown();
 	});
+
+	if( $('.chooses').length ) {
+
+		$('.chooses').each(function(){ 
+			var $this = $(this),
+				p = products[ $this.attr('data-product') ];
+			$this.siblings('footer').find('.count-third').find('.num').text( p.interest.toFixed(1) );
+		});
+		$('.choose-price').each(function(){ 
+			var $this = $(this),
+				p = products[ $this.closest('.chooses').attr('data-product') ];
+			$this.attr('data-min', Math.floor(p.minAmount));
+			$this.attr('data-max', Math.floor(p.maxAmount));
+			$this.attr('data-step', Math.floor(p.minAmount));
+			$this.find('.choose-hint').find('.min span').text( String(p.minAmount).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ') );
+			$this.find('.choose-hint').find('.max span').text( String(p.maxAmount).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ') );
+		});
+		$('.choose-day').each(function(){ 
+			var $this = $(this),
+				p = products[ $this.closest('.chooses').attr('data-product') ];
+			$this.attr('data-min', Math.floor(p.minTerm));
+			$this.attr('data-max', Math.floor(p.maxTerm));
+			$this.attr('data-step', Math.floor(p.minTerm));
+			$this.find('.choose-hint').find('.min span').text( p.minTerm );
+			$this.find('.choose-hint').find('.max span').text( p.maxTerm );
+		});
+
+	}
 
 
 	$('.choose-block').each(function() {
@@ -928,12 +956,18 @@ $(document).ready(function() {
 			$bet = $footer.find('.count-third').find('.num'),
 			bet = parseFloat( $bet.text() );
 
+
+
 		$form.val(value);
 
-		function slideChange(i, elem) {
+		function slideChange(i, elem, change) {
 			var $errors = $this.parents('.chooses').siblings('.errors'),
 				choosePrice = $(elem).parent().hasClass('choose-price');
-			$form.val(i);
+			if(change != false) {
+				$form.val(i);
+			} else {
+				i = $this.parents('.chooses').find('.choose-text').val();
+			}
 			if(choosePrice) {
 				if(i > 9000) {
 					if( ! $errors.find('span').length ) {
@@ -969,7 +1003,7 @@ $(document).ready(function() {
 				slideChange(ui.value, $(this));
 			},
 			change: function( event, ui ) {
-				slideChange(ui.value), $(this);
+				slideChange(ui.value, $(this), false);
 			},
 			create: function( event, ui ) {
 				var $this = $(this);
@@ -977,6 +1011,7 @@ $(document).ready(function() {
 				setTimeout(
 					function() {
 						var newVal = max / 2;
+						if( newVal > 9000 ) newVal = 9000
 						$this.slider('value', newVal);
 						slideChange(newVal, $this);
 					}, 1100
@@ -1010,8 +1045,8 @@ $(document).ready(function() {
 			$slider = $parent.find('.choose-slider'),
 			min = parseFloat( $parent.attr('data-min') ),
 			max = parseFloat( $parent.attr('data-max') );
-		if(val < min) val = min; $this.val(val);
-		if(val > max) val = max; $this.val(val);
+		// if(val < min) val = min; $this.val(val);
+		// if(val > max) val = max; $this.val(val);
 		$slider.slider('value', val);
 
 	});
@@ -1345,10 +1380,12 @@ $(document).ready(function() {
 	});
 
 	$('.btn-next-final').on('click', function() {
-		$('.oferta-confirm').slideDown();
-        setTimeout(function() {
-            $('select').trigger('refresh');
-        }, 1);
+		if( ! $(this).hasClass('disable') ) {
+			$('.oferta-confirm').slideDown();
+	        setTimeout(function() {
+	            $('select').trigger('refresh');
+	        }, 1);
+    	}
 		return false;
 	});
 
@@ -1369,14 +1406,16 @@ $(document).ready(function() {
 			$parent = $this.parents('.oferta'),
 			$checkboxs = $parent.find('input[type="checkbox"]'),
 			checked = true,
-			$hide = $parent.siblings('.oferta-hide');
+			$hide = $parent.siblings('.oferta-hide').find('.form-block');
 		$checkboxs.each(function() {
 			if( ! $(this).is(':checked') ) checked = false;
 		});
 		if(checked == true) {
 			$hide.slideDown().find('.form-text').focus();
+			$hide.siblings('.form-submit').find('.btn-next-final').removeClass('disable');
 		} else {
 			$hide.slideUp();
+			$hide.siblings('.form-submit').find('.btn-next-final').addClass('disable');
 		}
 	})
 

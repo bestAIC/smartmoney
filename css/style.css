@@ -321,6 +321,15 @@ a.btn-hollow:hover span {
 	color: #fff;
 }
 
+.btn.disable,
+a.btn.disable {
+	cursor: default;
+}
+.btn.disable:before,
+a.btn.disable:before {
+	opacity: 1 !important;
+	background: #eee !important;
+}
 
 
 .btn-next:after,
@@ -943,7 +952,7 @@ a.btn-next:after {
 	margin-bottom: 70px;
 }
 
-.oferta-hide {
+.oferta-hide .form-block {
 	display: none;
 }
 .oferta-confirm {
@@ -5272,6 +5281,10 @@ body {
 }
 .form-alert-confirm {
 	color: #25b9d2;
+}
+.callback-form-textarea .form-alert {
+	font: 20px/1.5em 'Houschka Pro DemiBold',sans-serif;
+	position: static;
 }
 .callback-form-top {
 	padding-bottom: 30px;
