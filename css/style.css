@@ -5400,6 +5400,7 @@ body {
 }
 .form-alert-confirm {
 	color: #25b9d2;
+	font: 20px/1.5em 'Houschka Pro DemiBold',sans-serif;
 }
 .callback-form-textarea .form-alert {
 	font: 20px/1.5em 'Houschka Pro DemiBold',sans-serif;
