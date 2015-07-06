@@ -7180,6 +7180,14 @@ a.aic:after {
 }
 
 
+.toggle-enter {
+	font: 21px 'Houschka Pro Medium',sans-serif;
+}
+.form-part {
+	display: none;
+}
+
+
 .archive .adaptive {
 	display: none;
 }
