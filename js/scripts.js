@@ -89,10 +89,8 @@ $(document).ready(function() {
 		
 		if( $part.is(':hidden') ) {
 			$part.slideDown();
-			$this.text( $this.attr('data-hide') );
 		} else {
 			$part.slideUp();
-			$this.text( $this.attr('data-show') );
 		}
 	});
 
