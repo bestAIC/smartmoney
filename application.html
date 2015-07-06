@@ -389,40 +389,13 @@
 
 								<div class="form-block">
 									<div class="form-label">
-										<label for="form-surname">Фамилия</label>
+										<label for="form-name">ФИО</label>
 									</div>
 									<div class="form-input">
-										<input type="text" id="form-surname" class="form-text" placeholder="Иванов">
+										<input type="text" id="form-name" class="form-text" placeholder="Иванов Иван Иванович">
 										<div class="hint">
 											<div class="icon">?</div>
-											<div class="hint-text"><div>Укажите фамилию</div></div>
-										</div>
-									</div>
-								</div>
-
-								<div class="form-block">
-									<div class="form-label">
-										<label for="form-name">Имя</label>
-									</div>
-									<div class="form-input">
-										<input type="text" id="form-name" class="form-text" placeholder="Иван">
-										<div class="hint">
-											<div class="icon">?</div>
-											<div class="hint-text"><div>Укажите имя</div></div>
-										</div>
-									</div>
-								</div>
-
-								<div class="form-block error">
-									<div class="form-label">
-										<label for="form-middlename">Отчество</label>
-									</div>
-									<div class="form-input">
-										<input type="text" id="form-middlename" class="form-text" placeholder="Иванович">
-										<div class="error-popup">Заполните это поле</div>
-										<div class="hint">
-											<div class="icon">?</div>
-											<div class="hint-text"><div>Укажите отчество</div></div>
+											<div class="hint-text"><div>Укажите ФИО</div></div>
 										</div>
 									</div>
 								</div>
@@ -453,6 +426,13 @@
 									</div>
 								</div>
 
+								<div class="form-block form-block_checkblock oferta-check">
+									<label class="checkblock">
+										<input type="checkbox">
+										<span>Я соглашаюсь с <a href="#presonal-data" class="various various-link" class="oferta-link">на обработку персональных данных и моей кредитной истории</a></span>
+									</label>
+								</div>
+
 								<div class="form-block form-sms hide">
 									<div class="form-label">
 										<label for="form-sms-confirm">Подтверждение операции при помощи SMS</label>
@@ -467,7 +447,7 @@
 								</div>
 
 								<div class="form-submit">
-									<button type="submit" class="btn btn-next" onclick="ga('send', 'pageview', '/next1');"><span>Продолжить</span></button>
+									<button type="submit" class="btn btn-next disable" onclick="ga('send', 'pageview', '/next1');"><span>Продолжить</span></button>
 								</div>
 							</div>
 							<!-- Конец первого шага -->
@@ -571,16 +551,16 @@
 								</div>
 
 								<div class="form-block">
-									<select>
-										<option>Семейное положение</option>
+									<select data-placeholder="Семейное положение">
+										<option></option>
 										<option>Женат</option>
 										<option>Холост</option>
 									</select>
 								</div>
 
 								<div class="form-block">
-									<select>
-										<option>Образование</option>
+									<select data-placeholder="Образование">
+										<option></option>
 										<option>Среднее</option>
 										<option>Средне-специальное</option>
 										<option>Неоконченное высшее</option>
@@ -760,41 +740,17 @@
 
 								<h2><span>3.1</span> Занятость</h2>
 
-								<div class="form-block form-block-checklist radio-select">
-									<label class="radioblock">
-										<input type="radio" name="form-busy" checked>
-										<span>Работаю по найму</span>
-									</label>
-									<label class="radioblock">
-										<input type="radio" name="form-busy">
-										<span>Работаю на себя</span>
-									</label>
-									<label class="radioblock">
-										<input type="radio" name="form-busy">
-										<span>Студент</span>
-									</label>
-									<label class="radioblock">
-										<input type="radio" name="form-busy">
-										<span>Пенсионер</span>
-									</label>
-									<label class="radioblock">
-										<input type="radio" name="form-busy">
-										<span>Не работаю</span>
-									</label>
+								<div class="form-block">
+									<select data-placeholder="Занятость">
+										<option></option>
+										<option>Работаю по найму</option>
+										<option>Работаю на себя</option>
+										<option>Студент</option>
+										<option>Пенсионер</option>
+										<option>Не работаю</option>
+									</select>
 								</div>
 
-								<div class="form-block">
-									<div class="form-label">
-										<label for="form-company">Название компании</label>
-									</div>
-									<div class="form-input">
-										<input type="text" id="form-company" class="form-text" placeholder="ООО «Ромашка»">
-										<div class="hint">
-											<div class="icon">?</div>
-											<div class="hint-text"><div>Укажите название компании</div></div>
-										</div>
-									</div>
-								</div>
 
 								
 								<h2><span>3.2</span> Доход</h2>
@@ -1101,17 +1057,6 @@
 													</tr>
 												</tbody>
 											</table>
-										</div></div>
-									</div>
-									<div class="oferta-line">
-										<label>
-											<input type="checkbox">
-											<span class="oferta-title">Я соглашаюсь с <span class="oferta-link">условиями публичной оферты</span></span>
-										</label>
-										<div class="oferta-text hide"><div class="oferta-text-scroll">
-											<p>Договор займа является наиболее типичным, универсальным кредитным обязательством. Возникнув из римского контракта "mutuum" (в пер. с латинского ссуда), договор займа и сегодня сохраняет значение общей модели, по которой строится регулирование всех кредитных отношений.</p>
-											<p>Договор займа - это соглашение, по которому одна сторона (заимодавец) передает в собственность другой стороне (заемщику) денежные средства или иные вещи, определенные родовыми признаками, а заемщик обязуется возвратить заимодавцу такую же сумму денег (сумму займа) или равное количество полученных им вещей того же рода и качества. Права и обязанности участников любого вида договора займа регулируются пар.1 гл.42 ГК РФ.</p>
-											<p>Договор займа является классической разновидностью реального и одностороннего договора. В силу действия п.1 ст.807 ГК РФ любой образец договора займа считается заключенным с момента передачи денег или других вещей. Реальный характер всех видов договора займа не означает, что соглашение сторон не имеет существенного значения: соглашения сторон недостаточно для возникновения заемного обязательства, однако (как и при всяком договоре) соглашение и при займе является необходимым моментом. Односторонность же договора займа проявляется в том, что заемщик создает для себя заключением договора долг, а займодавец всегда получает право требования.</p>
 										</div></div>
 									</div>
 									<div class="oferta-line">
@@ -1430,6 +1375,13 @@
 				</nav>
 			</div>
 		</footer>
+
+
+		<div class="new-popup"><div id="presonal-data">
+			<p>Договор займа является наиболее типичным, универсальным кредитным обязательством. Возникнув из римского контракта "mutuum" (в пер. с латинского ссуда), договор займа и сегодня сохраняет значение общей модели, по которой строится регулирование всех кредитных отношений.</p>
+			<p>Договор займа - это соглашение, по которому одна сторона (заимодавец) передает в собственность другой стороне (заемщику) денежные средства или иные вещи, определенные родовыми признаками, а заемщик обязуется возвратить заимодавцу такую же сумму денег (сумму займа) или равное количество полученных им вещей того же рода и качества. Права и обязанности участников любого вида договора займа регулируются пар.1 гл.42 ГК РФ.</p>
+			<p>Договор займа является классической разновидностью реального и одностороннего договора. В силу действия п.1 ст.807 ГК РФ любой образец договора займа считается заключенным с момента передачи денег или других вещей. Реальный характер всех видов договора займа не означает, что соглашение сторон не имеет существенного значения: соглашения сторон недостаточно для возникновения заемного обязательства, однако (как и при всяком договоре) соглашение и при займе является необходимым моментом. Односторонность же договора займа проявляется в том, что заемщик создает для себя заключением договора долг, а займодавец всегда получает право требования.</p>
+		</div></div>
 
 
 	</body>

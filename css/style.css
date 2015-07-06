@@ -920,12 +920,14 @@ a.btn-next:after {
 	display: block;
 	margin-left: 40px;
 }
+.various-link,
 .oferta-link {
 	cursor: pointer;
 	color: #3ec9d0;
 	border-bottom: 1px dashed #3ec9d0;
 	opacity: all .3s linear;
 }
+.various-link:hover,
 .oferta-link:hover {
 	color: #1a9dd3;
 	border-bottom-color: #1a9dd3;

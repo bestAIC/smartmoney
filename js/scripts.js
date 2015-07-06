@@ -398,10 +398,25 @@ $(document).ready(function() {
 		}
 	});
 
+	$('body').on('change', '.oferta-check input[type="checkbox"]', function() {
+		var $this = $(this),
+			$p = $this.closest('.oferta-check'),
+			$sms = $p.siblings('.form-sms'),
+			$btn = $p.siblings('.form-submit').find('.btn');
+		if( $this.is(':checked') ) {
+			$sms.slideDown();
+			$btn.removeClass('disable');
+		} else {
+			$sms.slideUp();
+			$btn.addClass('disable');
+		}
+	});
+
 
 	$('.btn-next, .back-link').on('click', function() {
-		var $this = $(this),
-			$parent = $this.parents('.step'),
+		var $this = $(this);
+		if($this.hasClass('disable')) return false;
+		var $parent = $this.parents('.step'),
 			current = parseFloat( $parent.attr('data-step') ),
 			isNext = $this.hasClass('btn-next'),
 			next;
@@ -531,13 +546,14 @@ $(document).ready(function() {
 
 
 	$('.various').fancybox({
-		maxWidth: 820,
-		minWidth: 820,
+		minWidth: '70%',
+		maxWidth: '70%',
+		maxHeight: '70%',
 		height: 'auto',
 		fitToView: true,
 		autoSize: true,
 		closeClick: false,
-		padding: 75,
+		padding: 25,
 		tpl: {
 			closeBtn : '<a title="Закрыть" class="fancybox-item fancybox-close link-image" href="javascript:;"></a>',
 		},
