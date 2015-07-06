@@ -86,7 +86,7 @@ $(document).ready(function() {
 	$('body').on('click', '.toggle-enter', function() {
 		var $this = $(this),
 			$part = $this.closest('.payment-type').find('.form-part');
-		console.log($part);
+		
 		if( $part.is(':hidden') ) {
 			$part.slideDown();
 			$this.text( $this.attr('data-hide') );
