@@ -1048,6 +1048,50 @@ a.btn-next:after {
 }
 
 
+.cashback-complete-list li {
+	padding-bottom: 33px;
+}
+
+
+.application-form .total-full {
+	margin-bottom: 39px;
+}
+.application-form .total-full strong {
+	font: 12px 'Houschka Pro Medium',sans-serif;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+	color: #000;
+	opacity: .5;
+	display: block;
+}
+.application-form .total-full span {
+	font: 17px 'Houschka Pro DemiBold',sans-serif;
+	letter-spacing: .03em;
+	color: #000;
+	opacity: .8;
+	display: block;
+	margin-top: 5px;
+}
+.application-form .total-full ul {
+	margin: 30px 0 -32px;
+}
+.application-form .total-full li {
+	margin-bottom: 32px;
+}
+.application-form .total-full li.left {
+	float: left;
+	width: 133px;
+}
+.application-form .total-full li.right {
+	float: right;
+	width: 94px;
+}
+.application-form .total-full li.right:after {
+	content: '';
+	clear: both;
+}
+
+
 .application-form {
 	margin-top: 45px;
 }
@@ -1556,6 +1600,7 @@ a.btn-next:after {
 	float: right;
 	width: 240px;
 }
+.form-text.form-text-small,
 #form-passport-code {
 	width: 145px;
 }
@@ -1676,26 +1721,42 @@ a.btn-next:after {
 }
 
 
-.back-link {
+.back-link,
+.next-link {
 	float: left;
 	font: 18px 'Houschka Pro Bold',sans-serif;
 	color: #1ab2d3;
 	letter-spacing: .3em;
 	text-transform: uppercase;
 	margin-top: 14px;
-	padding-left: 18px;
 	position: relative;
 }
-.back-link:before {
+.next-link {
+	padding-right: 18px;
+	float: right;
+}
+.back-link {
+	padding-left: 18px;
+}
+.back-link:before,
+.next-link:before {
 	content: '';
 	width: 6px;
 	height: 9px;
-	background: url('../images/back-link.png') no-repeat #1a9dd3;
 	position: absolute;
 	top: 50%;
-	left: 0;
+	
 	margin-top: -5px;
 }
+.back-link:before {
+	background: url('../images/back-link.png') no-repeat #1a9dd3;
+	left: 0;
+}
+.next-link:before {
+	background: url('../images/next-link.png') no-repeat #1a9dd3;
+	right: 0;
+}
+
 .form-block-checklist {
 	margin-bottom: -3px;
 }
@@ -1920,6 +1981,55 @@ label.card-holder {
 }
 .payment-type.current {
 	display: block;
+}
+.payment-info {
+	font: 20px/27px 'Houschka Pro Medium',sans-serif;
+	color: #3e495b;
+	letter-spacing: -.025em;
+	margin-top: -12px;
+}
+.create-receipt,
+.btn-receipt {
+	width: 375px;
+}
+.receipt {
+	margin-top: 62px;
+	display: none;
+}
+.receipt .description {
+	font: 20px/27px 'Houschka Pro Medium',sans-serif;
+	color: #3e495b;
+	letter-spacing: -.025em;
+	padding-bottom: 54px;
+}
+.receipt .description strong {
+	font: 20px/27px 'Houschka Pro DemiBold',sans-serif;
+}
+.receipt .description p {
+	margin-bottom: 27px;
+}
+.receipt .image {
+	margin-bottom: 35px;
+}
+.receipt .image img {
+	max-width: 100%;
+	height: auto;
+}
+
+.list-bullit li {
+	padding-left: 35px;
+	position: relative;
+	margin-bottom: 5px;
+}
+.list-bullit li:before {
+	content: '';
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: #1ab2d3;
+	position: absolute;
+	top: 12px;
+	left: 0;
 }
 
 .datepicker {
@@ -3764,6 +3874,13 @@ a.partner-link:hover {
 	position: relative;
 	top: -2px;
 }
+.section-header .description {
+	font: 21px/30px 'Houschka Pro Medium',sans-serif;
+	color: #3e495b;
+	letter-spacing: -.025em;
+	opacity: .8;
+	margin-top: 30px;
+}
 
 .tabs-nav {
 	position: relative;
@@ -5551,6 +5668,63 @@ body {
 	padding: 45px 60px;
 }
 
+.reprieve-blocks {
+	overflow: hidden;
+}
+.reprieve-block-old {
+	float: left;
+}
+.reprieve-block-new {
+	float: right;
+}
+.reprieve-block {
+	border: 3px solid #d1ebf6;
+	padding: 37px;
+	width: 470px;
+}
+.reprieve-block h4 {
+	font: 24px 'Houschka Pro Medium',sans-serif;
+	letter-spacing: .03em;
+	opacity: .8;
+	margin-bottom: 32px;
+}
+.reprieve-block h4 b {
+	font: 24px 'Houschka Pro DemiBold',sans-serif;
+}
+.reprieve-block li {
+	margin-bottom: 33px;
+}
+.reprieve-block li span {
+	padding-top: 12px;
+}
+#reprieve-timeout {
+	width: 58px;
+	padding-left: 0;
+	padding-right: 0;
+	text-align: center;
+}
+.reprieve-block .form-block {
+	width: 250px;
+	margin-top: 32px;
+}
+.reprieve-block .form-label {
+	width: 120px;
+}
+.reprieve-block .form-input {
+	margin-left: 126px;
+}
+.reprieve-warning {
+	font: 21px/28px 'Houschka Pro Medium',sans-serif;
+	color: #ff0000;
+	letter-spacing: -.025em;
+	margin-bottom: 50px;
+}
+.reprieve-block .btn {
+	width: 100%;
+}
+.reprieve-block li:last-child {
+	margin-bottom: 0;
+}
 
 .list li:first-child {
 	margin-top: 0;

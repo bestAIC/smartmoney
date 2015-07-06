@@ -51,6 +51,10 @@ $(document).ready(function() {
 		$('body').addClass('is-scrolled');
 	});
 
+	$('body').on('click', '.create-receipt', function() {
+		$(this).closest('.form-submit').siblings('.receipt').slideDown();
+	});
+
 	$('.faq-form').on('submit', function() {
 		$(this).find('.for-faq-sent').fadeIn(300);
 		return false;
@@ -1380,13 +1384,14 @@ $(document).ready(function() {
 	});
 
 	$('.btn-next-final').on('click', function() {
-		if( ! $(this).hasClass('disable') ) {
+		var $this = $(this);
+		if( ! $this.hasClass('disable') ) {
 			$('.oferta-confirm').slideDown();
 	        setTimeout(function() {
 	            $('select').trigger('refresh');
 	        }, 1);
     	}
-		return false;
+    	if( ! $this.hasClass('btn-next-go') ) return false;
 	});
 
 	$('.toggle-form').on('change', 'input[type="radio"]', function() {
