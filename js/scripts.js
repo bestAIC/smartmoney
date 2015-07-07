@@ -1,32 +1,3 @@
-// var products = [{
-//   productName: 'Повторный',
-//   interest: 2.0000,
-//   maxAmount: 15000.00,
-//   minAmount: 1000.00,
-//   maxTerm: 30,
-//   minTerm: 1,
-//   minFee: 0,
-//   available: true
-// }, {
-//   productName: 'Привилегированный',
-//   interest: 1.0000,
-//   maxAmount: 30000.00,
-//   minAmount: 1000.00,
-//   maxTerm: 30,
-//   minTerm: 1,
-//   minFee: 30000,
-//   available: false
-// }, {
-//   productName: 'Приоритетный',
-//   interest: 1.5000,
-//   maxAmount: 20000.00,
-//   minAmount: 1000.00,
-//   maxTerm: 30,
-//   minTerm: 1,
-//   minFee: 15000,
-//   available: false
-// }];
-
 $(document).ready(function() {
 // start
 	
