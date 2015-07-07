@@ -1,31 +1,31 @@
-var products = [{
-  productName: 'Повторный',
-  interest: 2.0000,
-  maxAmount: 15000.00,
-  minAmount: 1000.00,
-  maxTerm: 30,
-  minTerm: 1,
-  minFee: 0,
-  available: true
-}, {
-  productName: 'Привилегированный',
-  interest: 1.0000,
-  maxAmount: 30000.00,
-  minAmount: 1000.00,
-  maxTerm: 30,
-  minTerm: 1,
-  minFee: 30000,
-  available: false
-}, {
-  productName: 'Приоритетный',
-  interest: 1.5000,
-  maxAmount: 20000.00,
-  minAmount: 1000.00,
-  maxTerm: 30,
-  minTerm: 1,
-  minFee: 15000,
-  available: false
-}];
+// var products = [{
+//   productName: 'Повторный',
+//   interest: 2.0000,
+//   maxAmount: 15000.00,
+//   minAmount: 1000.00,
+//   maxTerm: 30,
+//   minTerm: 1,
+//   minFee: 0,
+//   available: true
+// }, {
+//   productName: 'Привилегированный',
+//   interest: 1.0000,
+//   maxAmount: 30000.00,
+//   minAmount: 1000.00,
+//   maxTerm: 30,
+//   minTerm: 1,
+//   minFee: 30000,
+//   available: false
+// }, {
+//   productName: 'Приоритетный',
+//   interest: 1.5000,
+//   maxAmount: 20000.00,
+//   minAmount: 1000.00,
+//   maxTerm: 30,
+//   minTerm: 1,
+//   minFee: 15000,
+//   available: false
+// }];
 
 $(document).ready(function() {
 // start
@@ -941,16 +941,32 @@ $(document).ready(function() {
 		$(this).siblings('.profile-saved').slideDown();
 	});
 
+	
+	// Работаем с продуктами
+	var productCurrent,
+		productInterest = Infinity;
+	for(var i = 0; i < products.length; i++) {
+		var productElem = products[i];
+		if( productElem.available == true ) {
+			if( productElem.interest < productInterest ) {
+				productInterest = productElem.interest;
+				productCurrent = i;
+			}
+		}
+	}
+	console.log( productCurrent );
+
+
 	if( $('.chooses').length ) {
 
 		$('.chooses').each(function(){ 
 			var $this = $(this),
-				p = products[ $this.attr('data-product') ];
+				p = products[productCurrent];
 			$this.siblings('footer').find('.count-third').find('.num').text( p.interest.toFixed(1) );
 		});
 		$('.choose-price').each(function(){ 
 			var $this = $(this),
-				p = products[ $this.closest('.chooses').attr('data-product') ];
+				p = products[productCurrent];
 			$this.attr('data-min', Math.floor(p.minAmount));
 			$this.attr('data-max', Math.floor(p.maxAmount));
 			$this.attr('data-step', Math.floor(p.minAmount));
@@ -959,7 +975,7 @@ $(document).ready(function() {
 		});
 		$('.choose-day').each(function(){ 
 			var $this = $(this),
-				p = products[ $this.closest('.chooses').attr('data-product') ];
+				p = products[productCurrent];
 			$this.attr('data-min', Math.floor(p.minTerm));
 			$this.attr('data-max', Math.floor(p.maxTerm));
 			$this.attr('data-step', Math.floor(p.minTerm));
@@ -972,9 +988,10 @@ $(document).ready(function() {
 
 	$('.choose-block').each(function() {
 		var $this = $(this),
-			min = parseFloat( $this.attr('data-min') ),
-			max = parseFloat( $this.attr('data-max') ),
-			step = parseFloat( $this.attr('data-step') ),
+			p = products[productCurrent]
+			min = parseFloat( p.minAmount ),
+			max = parseFloat( p.maxAmount ),
+			step = parseFloat( p.minAmount ),
 			value = parseFloat( $this.attr('data-value') ),
 			$slider = $this.find('.choose-slider'),
 			$form = $this.find('.choose-text'),
