@@ -925,7 +925,7 @@ $(document).ready(function() {
 			}
 		}
 	}
-	console.log( productCurrent );
+
 
 
 	if( $('.chooses').length ) {
@@ -935,6 +935,7 @@ $(document).ready(function() {
 				p = products[productCurrent];
 			$this.siblings('footer').find('.count-third').find('.num').text( p.interest.toFixed(1) );
 		});
+
 		$('.choose-price').each(function(){ 
 			var $this = $(this),
 				p = products[productCurrent];
@@ -944,6 +945,7 @@ $(document).ready(function() {
 			$this.find('.choose-hint').find('.min span').text( String(p.minAmount).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ') );
 			$this.find('.choose-hint').find('.max span').text( String(p.maxAmount).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ') );
 		});
+
 		$('.choose-day').each(function(){ 
 			var $this = $(this),
 				p = products[productCurrent];
@@ -959,11 +961,23 @@ $(document).ready(function() {
 
 	$('.choose-block').each(function() {
 		var $this = $(this),
-			p = products[productCurrent]
-			min = parseFloat( p.minAmount ),
-			max = parseFloat( p.maxAmount ),
-			step = parseFloat( p.minAmount ),
-			value = parseFloat( $this.attr('data-value') ),
+			p = products[productCurrent];
+
+		if( $this.hasClass('choose-price') ) {
+			var min = parseFloat( p.minAmount ),
+				max = parseFloat( p.maxAmount ),
+				step = parseFloat( p.minAmount );
+		} else if( $this.hasClass('choose-day') ) {
+			var min = parseFloat( p.minTerm ),
+				max = parseFloat( p.maxTerm ),
+				step = parseFloat( p.minTerm );
+		} else {
+			var min = parseFloat( $this.attr('data-min') ),
+				max = parseFloat( $this.attr('data-max') ),
+				step = parseFloat( $this.attr('data-step') );
+		}
+
+		var value = parseFloat( $this.attr('data-value') ),
 			$slider = $this.find('.choose-slider'),
 			$form = $this.find('.choose-text'),
 			$min = $this.find('.min'),
