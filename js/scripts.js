@@ -915,7 +915,10 @@ $(document).ready(function() {
 	
 	// Работаем с продуктами
 	var productCurrent,
-		productInterest = Infinity;
+		productInterest = Infinity,
+		currentMax,
+		currentDay;
+
 	for(var i = 0; i < products.length; i++) {
 		var productElem = products[i];
 		if( productElem.available == true ) {
@@ -926,6 +929,14 @@ $(document).ready(function() {
 		}
 	}
 
+
+	if( typeof current != 'undefined' ) {
+		currentMax = current[0].maxAmount;
+		currentDay = current[0].maxTerm;
+	} else {
+		currentMax = products[productCurrent].maxAmount;
+		currentDay = products[productCurrent].maxTerm;
+	}
 
 
 	if( $('.chooses').length ) {
@@ -958,6 +969,10 @@ $(document).ready(function() {
 
 	}
 
+	$('.app').on('click', '.btn.disable', function() {
+		return false;
+	});
+
 
 	$('.choose-block').each(function() {
 		var $this = $(this),
@@ -966,19 +981,21 @@ $(document).ready(function() {
 		if( $this.hasClass('choose-price') ) {
 			var min = parseFloat( p.minAmount ),
 				max = parseFloat( p.maxAmount ),
-				step = parseFloat( p.minAmount );
+				step = parseFloat( p.minAmount ),
+				value = parseFloat(currentMax);
 		} else if( $this.hasClass('choose-day') ) {
 			var min = parseFloat( p.minTerm ),
 				max = parseFloat( p.maxTerm ),
-				step = parseFloat( p.minTerm );
+				step = parseFloat( p.minTerm ),
+				value = parseFloat( currentDay );
 		} else {
 			var min = parseFloat( $this.attr('data-min') ),
 				max = parseFloat( $this.attr('data-max') ),
-				step = parseFloat( $this.attr('data-step') );
+				step = parseFloat( $this.attr('data-step') ),
+				value = parseFloat( $this.attr('data-value') );
 		}
 
-		var value = parseFloat( $this.attr('data-value') ),
-			$slider = $this.find('.choose-slider'),
+		var $slider = $this.find('.choose-slider'),
 			$form = $this.find('.choose-text'),
 			$min = $this.find('.min'),
 			$max = $this.find('.max'),
@@ -988,30 +1005,59 @@ $(document).ready(function() {
 			$to = $footer.find('.count-second').find('.num'),
 			$month = $footer.find('.count-second').find('big'),
 			$bet = $footer.find('.count-third').find('.num'),
-			bet = parseFloat( $bet.text() );
-
-
+			bet = parseFloat( $bet.text() ),
+			$btn = $parent.find('.btn');
 
 		$form.val(value);
 
 		function slideChange(i, elem, change) {
-			var $errors = $this.parents('.chooses').siblings('.errors'),
-				choosePrice = $(elem).parent().hasClass('choose-price');
+			var $errors = $this.closest('.chooses').siblings('.errors'),
+				choosePrice = $(elem).parent().hasClass('choose-price'),
+				chooseDay = $(elem).parent().hasClass('choose-day'),
+				valid = true;
 			if(change != false) {
 				$form.val(i);
-			} else {
-				i = $this.parents('.chooses').find('.choose-text').val();
 			}
-			if(choosePrice) {
-				if(i > 9000) {
-					if( ! $errors.find('span').length ) {
-						$errors.append('<span style="display: none;">Сумма свыше 9000 рублей доступна для второго займа</span>');
-						$errors.find('span').fadeIn(500);
-					}
+			iPrice = $this.closest('.chooses').find('.choose-price .choose-text').val();
+			iDay = $this.closest('.chooses').find('.choose-day .choose-text').val();
+
+			function validation() {
+				var ok = true,	
+					$span = $errors.find('span');
+				
+				// Проверка суммы
+				if(iPrice > currentMax) {
+					$errors.html('<span data-type="price">Сумма свыше ' + currentMax +  ' рублей доступна для следующего займа</span>');
+					ok = false;
 				} else {
-					$errors.find('span').remove();
+					$span.remove();
+					ok = true;
 				}
+
+				// Проверка срока
+				if(ok) {
+					if( (iDay > currentDay) ) {
+							$errors.html('<span data-type="price">Срок свыше ' + currentDay +  ' дней доступна для следующего займа</span>');
+							ok = false;
+					} else {
+						$span.remove();
+						ok = true;
+					}
+				}
+
+				return ok;
 			}
+
+			var isValid = validation();
+
+			if(isValid) {
+				$btn.removeClass('disable');
+			} else {
+				$btn.addClass('disable');
+			}
+
+			
+
 			var price = parseFloat( $parent.find('.choose-price .choose-text').val() ),
 				day = parseFloat( $parent.find('.choose-day .choose-text').val() ),
 				ret = Math.ceil( price * (bet / 100) * day + price ),
@@ -1040,12 +1086,19 @@ $(document).ready(function() {
 				slideChange(ui.value, $(this), false);
 			},
 			create: function( event, ui ) {
-				var $this = $(this);
+				var $this = $(this),
+					$parent = $this.parent();
 				$this.slider('value', max);
 				setTimeout(
 					function() {
 						var newVal = max / 2;
-						if( newVal > 9000 ) newVal = 9000
+
+						if( $parent.hasClass('choose-price') ) {
+							if( newVal > currentMax ) newVal = currentMax
+						} else if( $parent.hasClass('choose-day') ) {
+							if( newVal > currentDay ) newVal = currentDay
+						}
+
 						$this.slider('value', newVal);
 						slideChange(newVal, $this);
 					}, 1100
