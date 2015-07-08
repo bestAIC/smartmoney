@@ -1022,28 +1022,44 @@ $(document).ready(function() {
 			iDay = $this.closest('.chooses').find('.choose-day .choose-text').val();
 
 			function validation() {
-				var ok = true,	
+				var ok = false,
+					okPrice = true,
+					okDay = true,
 					$span = $errors.find('span');
 				
 				// Проверка суммы
 				if(iPrice > currentMax) {
-					$errors.html('<span data-type="price">Сумма свыше ' + currentMax +  ' рублей доступна для следующего займа</span>');
-					ok = false;
+					okPrice = false;
 				} else {
-					$span.remove();
-					ok = true;
+					okPrice = true;
 				}
 
 				// Проверка срока
-				if(ok) {
-					if( (iDay > currentDay) ) {
-							$errors.html('<span data-type="price">Срок свыше ' + currentDay +  ' дней доступна для следующего займа</span>');
-							ok = false;
-					} else {
-						$span.remove();
-						ok = true;
-					}
+				if( (iDay > currentDay) ) {
+					okDay = false;
+				} else {
+					
+					okDay = true;
 				}
+
+				// Вывод ошибок
+				if(okPrice && okDay) {
+					ok = true;
+					$span.remove();
+				}
+				if(okPrice && okDay == false) {
+					ok = false;
+					$errors.html('<span data-type="price">Срок свыше ' + currentDay +  ' дней доступна для при следующем займе</span>');
+				}
+				if(okPrice == false && okDay) {
+					ok = false;
+					$errors.html('<span data-type="price">Сумма свыше ' + currentMax +  ' рублей доступна при следующем займе</span>');
+				}
+				if(okPrice == false && okDay == false) {
+					ok = false;
+					$errors.html('<span data-type="price">Данные срок и сумма будут доступны при следующем займе</span>');
+				}
+			
 
 				return ok;
 			}
