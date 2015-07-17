@@ -9398,6 +9398,22 @@ a.aic:after {
 	.for-faq-sent {
 		margin-left: 0;
 	}
+	.form-alert {
+		position: relative;
+	}
+	.partner-form {
+		margin-top: 36px;
+	}
+	.callback-form-top {
+		padding-bottom: 0;
+	}
+	.callback-container .callback-form {
+		float: none;
+		margin-bottom: 20px;
+	}
+	.ui-datepicker {
+		width: 280px;
+	}
 
 
 }
