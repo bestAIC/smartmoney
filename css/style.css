@@ -3108,7 +3108,6 @@ a.partner-link:hover {
 	}
 	.app .errors span {
 		color: rgba(255, 48, 0, .8);
-		white-space: nowrap;
 	}
 	.advantages {
 		margin-bottom: 34px;

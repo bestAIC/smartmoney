@@ -1004,6 +1004,7 @@ $(document).ready(function() {
 			$return = $footer.find('.count-first').find('.num'),
 			$to = $footer.find('.count-second').find('.num'),
 			$month = $footer.find('.count-second').find('big'),
+			$mon = $footer.find('.count-second').find('small'),
 			$bet = $footer.find('.count-third').find('.num'),
 			bet = parseFloat( $bet.text() ),
 			$btn = $parent.find('.btn');
@@ -1081,11 +1082,13 @@ $(document).ready(function() {
 			today.setDate(today.getDate() + day);
 			var days = ['Воскресенье','Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
 				months = ['января', 'февраля', 'марта', 'апреля', 'мая','июня', 'июля','августа','сентября','октября','ноября','декабря'],
+				mon = ['янв.', 'фев.', 'мар.', 'апр.', 'мая','июн.', 'июл.','авг.','сен.','окт.','ноя.','дек.'],
 				m = today.getMonth(),
 				d = today.getDate();
 			$return.text(ret);
 			$to.text(d),
 			$month.text(months[m]);
+			$mon.text(mon[m]);
 		}
 
 		$slider.slider({
