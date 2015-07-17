@@ -11,15 +11,16 @@ $(document).ready(function() {
 		var $start = $('.start'),
 			startHeight = $start.height(),
 			top = $(window).scrollTop();
-
 		if(! $('body').hasClass('is-scrolled')) {
-			if( top < startHeight  ) {
+			
+			if( (top > 100) && (top < startHeight) && $(window).width() > 1180  ) {
 				$('html, body').animate({
 					scrollTop: startHeight
 				}, 1000);
+				$('body').addClass('is-scrolled');
 			}
 		}
-		$('body').addClass('is-scrolled');
+		
 	});
 
 	$('body').on('click', '.create-receipt', function() {
@@ -919,23 +920,23 @@ $(document).ready(function() {
 		currentMax,
 		currentDay;
 
-	for(var i = 0; i < products.length; i++) {
-		var productElem = products[i];
-		if( productElem.available == true ) {
-			if( productElem.interest < productInterest ) {
-				productInterest = productElem.interest;
-				productCurrent = i;
+	if(typeof products != 'undefined') {
+		for(var i = 0; i < products.length; i++) {
+			var productElem = products[i];
+			if( productElem.available == true ) {
+				if( productElem.interest < productInterest ) {
+					productInterest = productElem.interest;
+					productCurrent = i;
+				}
 			}
 		}
-	}
-
-
-	if( typeof current != 'undefined' ) {
-		currentMax = current[0].maxAmount;
-		currentDay = current[0].maxTerm;
-	} else {
-		currentMax = products[productCurrent].maxAmount;
-		currentDay = products[productCurrent].maxTerm;
+		if( typeof current != 'undefined' ) {
+			currentMax = current[0].maxAmount;
+			currentDay = current[0].maxTerm;
+		} else {
+			currentMax = products[productCurrent].maxAmount;
+			currentDay = products[productCurrent].maxTerm;
+		}
 	}
 
 

@@ -8146,6 +8146,26 @@ a.aic:after {
 	.header-right .profile .link .icon {
 		right: auto;
 	}
+
+	
+	.new-popup aside {
+		float: none;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	.new-popup aside .new-control {
+		margin: 0 10px 0 0 !important;
+		width: 30px;
+		height: 30px;
+		background-size: 30px 30px;
+	}
+	.new-popup article {
+		width: 100%;
+	}
+	.new-popup article img {
+		max-width: 100%;
+		height: auto;
+	}
 }
 
 @media screen and (min-width: 1180px) {
