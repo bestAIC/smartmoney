@@ -1422,6 +1422,9 @@ a.btn-next:after {
 .application {
 	width: 600px;
 }
+.application.fullwidth {
+	width: auto;
+}
 .application h1 {
 	font: 54px 'Houschka Pro Light',sans-serif;
 	color: #3e495b;
@@ -9419,7 +9422,9 @@ a.aic:after {
 }
 
 
-
+.paym-reprive {
+	display: none;
+}
 
 
 

@@ -1158,6 +1158,55 @@ $(document).ready(function() {
 
 	});
 
+
+
+
+	function countReprieve() {
+		var $days = $('#reprieve-timeout');
+			if( $days.length ) {
+				day = parseFloat( $days.val() ),
+				price = $('.cur-summ').text(),
+				bet = productInterest,
+				newPrice = 0;
+			if(day > currentDay ) {
+				day = currentDay;
+				$days.val(day);
+			}
+
+			var today = new Date(),
+				newDate = new Date();
+			newDate.setDate(today.getDate() + day);
+			var days = ['Воскресенье','Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
+				months = ['января', 'февраля', 'марта', 'апреля', 'мая','июня', 'июля','августа','сентября','октября','ноября','декабря']
+				nowM = today.getMonth(),
+				nowD = today.getDate(),
+				newM = newDate.getMonth(),
+				newD = newDate.getDate();
+
+			price = parseFloat( price.replace(/\s+/g, '') );
+			newPrice = price * (bet / 100) * day + price;
+			$('.new-bet').text(bet + '%');
+			$('.nowDate').text(nowD + ' ' + months[nowM]);
+			$('.newDate').text(newD + ' ' + months[newM]);
+			var newPriceProcent = newPrice - price,
+				newPriceSumm = newPrice - newPriceProcent;
+			$('.new-sum').html(newPriceSumm + ' <font>Р</font>');
+			$('.new-proc').html(newPriceProcent + ' <font>Р</font>');
+		}
+	}
+
+	if( $('.recount-reprieve').length ) countReprieve();
+
+	$('.reprieve-block-old').on('click', '.btn', function() {
+		if( ! $(this).hasClass('zero') ) {
+			countReprieve();
+		}
+		$('.paym-reprive').slideDown();
+		return false;
+	});
+
+	
+
     
     // Рассчет работы слайдера в партнерах
     function countPartnerSlider() {
