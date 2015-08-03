@@ -1195,12 +1195,10 @@ $(document).ready(function() {
 		}
 	}
 
-	if( $('.recount-reprieve').length ) countReprieve();
+	countReprieve();
 
 	$('.reprieve-block-old').on('click', '.btn', function() {
-		if( ! $(this).hasClass('zero') ) {
-			countReprieve();
-		}
+		countReprieve();
 		$('.paym-reprive').slideDown();
 		return false;
 	});
