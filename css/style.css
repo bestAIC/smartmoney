@@ -2037,6 +2037,19 @@ label.card-holder {
 	left: 0;
 }
 
+.list-columns li {
+	float: left;
+	width: 25%;
+}
+@media screen and (max-width: 690px) {
+	.list-columns li {
+		float: none;
+		width: auto;
+	}
+}
+
+
+
 .datepicker {
 	position: relative;
 	width: 192px;
